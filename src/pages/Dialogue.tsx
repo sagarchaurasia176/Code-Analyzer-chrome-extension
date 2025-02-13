@@ -11,6 +11,13 @@ const Dialogue = () => {
       {/* chat box will be appear when the button is clicked */}
       {/* chat box will be appear when the button is clicked */}
       {/* chat box will be appear when the button is clicked */}
+      {/* chat box will be appear when the button is clicked */}
+      {/* chat box will be appear when the button is clicked */}
+      {/* chat box will be appear when the button is clicked */}
+      {/* chat box will be appear when the button is clicked */}
+      {/* chat box will be appear when the button is clicked */}
+      {/* chat box will be appear when the button is clicked */}
+      
     </div>
   )
 }
