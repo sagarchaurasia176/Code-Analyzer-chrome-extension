@@ -7,7 +7,7 @@ const container = document.createElement('div')
 container.id = 'LeetcodeContainer'
 document.body.append(container)
 
-// create Root of this files okay
+// create Root of this files okay here we are creating the root of the react app
 createRoot(container).render(
     <Content/>
 ) 
