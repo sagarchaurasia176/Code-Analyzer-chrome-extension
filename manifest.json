@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "LeetCode Context Injector",
+    "version": "1.0", 
+    "description": "Injects context.tsx when visiting LeetCode",
+    "permissions": [
+      "tabs"
+    ],
+    "host_permissions": ["*://*.leetcode.com/*"],
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "16": "./src/icons/expand.png",
+        "32": "./src/icons/expand.png", 
+        "48": "./src/icons/expand.png",
+        "128": "./src/icons/expand.png"
+      }
+    },
+  
+    "icons": {
+        "16": "./src/icons/expand.png",
+        "32": "./src/icons/expand.png",
+        "48": "./src/icons/expand.png",
+        "128": "./src/icons/expand.png"
+    },
+    
+    "content_scripts": [
+      {
+        "matches": ["*://*.leetcode.com/*"],
+        "js": ["src/content.tsx"]
+      }
+    ],
+    "background": {
+      "service_worker": "src/background.ts"
+    }
+  }

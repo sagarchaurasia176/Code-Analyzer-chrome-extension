@@ -1,0 +1,31 @@
+{
+  "name": "complexityanalyzersexten",
+  "version": "1.0.0", 
+  "description": "Chrome extension for analyzing LeetCode problem complexity",
+  "dependencies": {
+    "@types/chrome": "^0.0.304",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.2.19",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.13.3",
+    "@parcel/transformer-json": "^2.13.3",
+    "@parcel/transformer-typescript-tsc": "^2.13.3",
+    "@parcel/transformer-sass": "2.13.3",
+    "parcel": "^2.13.3",
+    "parcel-reporter-static-files-copy": "^2.0.0",
+    "process": "^0.11.10",
+    "typescript": "^5.7.3",
+    "buffer": "^5.7.1"
+  },
+  "scripts": {
+    "start": "parcel watch manifest.json index.html src/background.ts src/content.tsx --host localhost --config @parcel/config-webextension",
+    "build": "parcel build manifest.json index.html src/background.ts src/content.tsx --config @parcel/config-webextension",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": ["chrome-extension", "leetcode", "complexity-analysis"],
+  "author": "",
+  "license": "ISC"
+}
