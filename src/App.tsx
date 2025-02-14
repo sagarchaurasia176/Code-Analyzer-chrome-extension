@@ -5,7 +5,7 @@ import './App.css'
 const App = () => {
   return (
     <div>
-      <h1>Complexity Analyzer</h1>
+      <h1>Complexity by sagar</h1>
     </div>
   )
 }
