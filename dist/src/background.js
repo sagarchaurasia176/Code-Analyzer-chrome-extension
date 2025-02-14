@@ -142,9 +142,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"kWquC":[function(require,module,exports,__globalThis) {
-var Refresh = require("28a6a69e9d20b690");
-var ErrorOverlay = require("51ce659ede580c2");
+})({"aQL8O":[function(require,module,exports,__globalThis) {
+var Refresh = require("f11b6b8f6a1f6f0b");
+var ErrorOverlay = require("f490fb404efab291");
 window.__REACT_REFRESH_VERSION_RUNTIME = '0.14.2';
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
@@ -164,11 +164,11 @@ window.addEventListener('parcelhmraccept', ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"28a6a69e9d20b690":"gF2HS","51ce659ede580c2":"hzIym"}],"gF2HS":[function(require,module,exports,__globalThis) {
+},{"f11b6b8f6a1f6f0b":"786KC","f490fb404efab291":"1dldy"}],"786KC":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("93b8343b3e355a5f");
+module.exports = require("96622d495519d4e");
 
-},{"93b8343b3e355a5f":"8h2s9"}],"8h2s9":[function(require,module,exports,__globalThis) {
+},{"96622d495519d4e":"hdge7"}],"hdge7":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-refresh-runtime.development.js
@@ -609,8 +609,8 @@ module.exports = require("93b8343b3e355a5f");
     exports.setSignature = setSignature;
 })();
 
-},{}],"hzIym":[function(require,module,exports,__globalThis) {
-var process = require("3dd49ed909d5c9c3");
+},{}],"1dldy":[function(require,module,exports,__globalThis) {
+var process = require("d1546958eb39fdcf");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2340,7 +2340,7 @@ var process = require("3dd49ed909d5c9c3");
     ]);
 });
 
-},{"3dd49ed909d5c9c3":"8MGn2"}],"8MGn2":[function(require,module,exports,__globalThis) {
+},{"d1546958eb39fdcf":"d5jf4"}],"d5jf4":[function(require,module,exports,__globalThis) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2485,7 +2485,7 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"bHBBo":[function(require,module,exports,__globalThis) {
+},{}],"4mhZV":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = "localhost";
 var HMR_PORT = 1234;
@@ -2955,6 +2955,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse)=>{
     return true;
 });
 
-},{}]},["kWquC","bHBBo","6FKGH"], "6FKGH", "parcelRequire94c2")
+},{}]},["aQL8O","4mhZV","6FKGH"], "6FKGH", "parcelRequire94c2")
 
 //# sourceMappingURL=background.js.map

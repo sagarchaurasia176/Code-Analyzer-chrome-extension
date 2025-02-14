@@ -6,8 +6,14 @@
       "@parcel/transformer-react-refresh-wrap"
     ]
   },
-  "resolvers": ["@parcel/resolver-default"],
-  "validators": {
-    "*.{ts,tsx}": ["@parcel/validator-typescript"]
-  }
+  "namers": ["@parcel/namer-default"],
+  "packagers": {
+    "*.html": "@parcel/packager-html",
+    "*.js": "@parcel/packager-js",
+    "*.css": "@parcel/packager-css"
+  },
+  "optimizers": {
+    "*.js": ["@parcel/optimizer-terser"]
+  },
+  "reporters": ["...", "parcel-reporter-static-files-copy"]
 }

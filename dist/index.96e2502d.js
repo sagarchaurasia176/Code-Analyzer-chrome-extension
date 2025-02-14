@@ -142,9 +142,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"kWquC":[function(require,module,exports,__globalThis) {
-var Refresh = require("28a6a69e9d20b690");
-var ErrorOverlay = require("51ce659ede580c2");
+})({"aQL8O":[function(require,module,exports,__globalThis) {
+var Refresh = require("f11b6b8f6a1f6f0b");
+var ErrorOverlay = require("f490fb404efab291");
 window.__REACT_REFRESH_VERSION_RUNTIME = '0.14.2';
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
@@ -164,11 +164,11 @@ window.addEventListener('parcelhmraccept', ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"28a6a69e9d20b690":"gF2HS","51ce659ede580c2":"hzIym"}],"gF2HS":[function(require,module,exports,__globalThis) {
+},{"f11b6b8f6a1f6f0b":"786KC","f490fb404efab291":"1dldy"}],"786KC":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("93b8343b3e355a5f");
+module.exports = require("96622d495519d4e");
 
-},{"93b8343b3e355a5f":"8h2s9"}],"8h2s9":[function(require,module,exports,__globalThis) {
+},{"96622d495519d4e":"hdge7"}],"hdge7":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-refresh-runtime.development.js
@@ -609,8 +609,8 @@ module.exports = require("93b8343b3e355a5f");
     exports.setSignature = setSignature;
 })();
 
-},{}],"hzIym":[function(require,module,exports,__globalThis) {
-var process = require("3dd49ed909d5c9c3");
+},{}],"1dldy":[function(require,module,exports,__globalThis) {
+var process = require("d1546958eb39fdcf");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2340,7 +2340,7 @@ var process = require("3dd49ed909d5c9c3");
     ]);
 });
 
-},{"3dd49ed909d5c9c3":"8MGn2"}],"8MGn2":[function(require,module,exports,__globalThis) {
+},{"d1546958eb39fdcf":"d5jf4"}],"d5jf4":[function(require,module,exports,__globalThis) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2485,7 +2485,7 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"15NCC":[function(require,module,exports,__globalThis) {
+},{}],"ily0w":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = "localhost";
 var HMR_PORT = 1234;
@@ -2963,11 +2963,11 @@ var _appDefault = parcelHelpers.interopDefault(_app);
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"azdf2","react":"6HdAL","react-dom/client":"kpoEC","./App":"7F5Te","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lGCvP"}],"azdf2":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./App":"7F5Te","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("4a51f345d5509e7a");
+module.exports = require("ee51401569654d91");
 
-},{"4a51f345d5509e7a":"1HvNj"}],"1HvNj":[function(require,module,exports,__globalThis) {
+},{"ee51401569654d91":"48uCM"}],"48uCM":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-jsx-dev-runtime.development.js
@@ -2979,7 +2979,7 @@ module.exports = require("4a51f345d5509e7a");
  */ 'use strict';
 (function() {
     'use strict';
-    var React = require("d54164b73c4f1df3");
+    var React = require("58362d9d82be395f");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -3811,11 +3811,11 @@ module.exports = require("4a51f345d5509e7a");
     exports.jsxDEV = jsxDEV$1;
 })();
 
-},{"d54164b73c4f1df3":"6HdAL"}],"6HdAL":[function(require,module,exports,__globalThis) {
+},{"58362d9d82be395f":"21dqq"}],"21dqq":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("c39d1112defea06c");
+module.exports = require("a569817e6ea559f6");
 
-},{"c39d1112defea06c":"kwG2P"}],"kwG2P":[function(require,module,exports,__globalThis) {
+},{"a569817e6ea559f6":"6YvXz"}],"6YvXz":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react.development.js
@@ -5682,9 +5682,9 @@ module.exports = require("c39d1112defea06c");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"kpoEC":[function(require,module,exports,__globalThis) {
+},{}],"lOjBx":[function(require,module,exports,__globalThis) {
 'use strict';
-var m = require("ba932615d03ad932");
+var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -5703,7 +5703,7 @@ exports.hydrateRoot = function(c, h, o) {
     }
 };
 
-},{"ba932615d03ad932":"eZ7vI"}],"eZ7vI":[function(require,module,exports,__globalThis) {
+},{"aaccff5d309d9239":"j6uA9"}],"j6uA9":[function(require,module,exports,__globalThis) {
 'use strict';
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function') return;
@@ -5717,9 +5717,9 @@ function checkDCE() {
     // a false positive.
     throw new Error('^_^');
 }
-module.exports = require("16a63809d0c855d7");
+module.exports = require("b0f0e6b9e8349dac");
 
-},{"16a63809d0c855d7":"61qFu"}],"61qFu":[function(require,module,exports,__globalThis) {
+},{"b0f0e6b9e8349dac":"3iA9v"}],"3iA9v":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-dom.development.js
@@ -5732,8 +5732,8 @@ module.exports = require("16a63809d0c855d7");
 (function() {
     'use strict';
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("99de0446dddd0b09");
-    var Scheduler = require("79e87e1e6f01a002");
+    var React = require("6f0162e9ab224cd4");
+    var Scheduler = require("8ad4ca65319d28a7");
     var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     var suppressWarning = false;
     function setSuppressWarning(newSuppressWarning) {
@@ -26748,11 +26748,11 @@ module.exports = require("16a63809d0c855d7");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{"99de0446dddd0b09":"6HdAL","79e87e1e6f01a002":"9KcUC"}],"9KcUC":[function(require,module,exports,__globalThis) {
+},{"6f0162e9ab224cd4":"21dqq","8ad4ca65319d28a7":"juvHo"}],"juvHo":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("6dd06a6d217f614c");
+module.exports = require("ef03b89c8fe2794e");
 
-},{"6dd06a6d217f614c":"74NoR"}],"74NoR":[function(require,module,exports,__globalThis) {
+},{"ef03b89c8fe2794e":"RqdIf"}],"RqdIf":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * scheduler.development.js
@@ -27223,7 +27223,7 @@ var _appCss = require("./App.css");
 const App = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "Complexity Analyzer"
+            children: "Complexity by sagar"
         }, void 0, false, {
             fileName: "src/App.tsx",
             lineNumber: 8,
@@ -27245,7 +27245,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"azdf2","react":"6HdAL","./App.css":"6n0o6","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lGCvP"}],"6n0o6":[function() {},{}],"3QV8O":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./App.css":"6n0o6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6n0o6":[function() {},{}],"gkKU3":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27275,10 +27275,10 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"lGCvP":[function(require,module,exports,__globalThis) {
+},{}],"km3Ru":[function(require,module,exports,__globalThis) {
 "use strict";
-var Refresh = require("c8a56b24bd69684b");
-var { version } = require("b73042f8395b012");
+var Refresh = require("7422ead32dcc1e6b");
+var { version } = require("630b62916b1ae0e7");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -27417,9 +27417,9 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"c8a56b24bd69684b":"gF2HS","b73042f8395b012":"bwWSp"}],"bwWSp":[function(require,module,exports,__globalThis) {
+},{"7422ead32dcc1e6b":"786KC","630b62916b1ae0e7":"4SQxb"}],"4SQxb":[function(require,module,exports,__globalThis) {
 module.exports = JSON.parse("{\"name\":\"react-refresh\",\"description\":\"React is a JavaScript library for building user interfaces.\",\"keywords\":[\"react\"],\"version\":\"0.14.2\",\"homepage\":\"https://reactjs.org/\",\"bugs\":\"https://github.com/facebook/react/issues\",\"license\":\"MIT\",\"files\":[\"LICENSE\",\"README.md\",\"babel.js\",\"runtime.js\",\"cjs/\",\"umd/\"],\"main\":\"runtime.js\",\"exports\":{\".\":\"./runtime.js\",\"./runtime\":\"./runtime.js\",\"./babel\":\"./babel.js\",\"./package.json\":\"./package.json\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/facebook/react.git\",\"directory\":\"packages/react\"},\"engines\":{\"node\":\">=0.10.0\"},\"devDependencies\":{\"react-16-8\":\"npm:react@16.8.0\",\"react-dom-16-8\":\"npm:react-dom@16.8.0\",\"scheduler-0-13\":\"npm:scheduler@0.13.0\"}}");
 
-},{}]},["kWquC","15NCC","l4cos"], "l4cos", "parcelRequire94c2")
+},{}]},["aQL8O","ily0w","l4cos"], "l4cos", "parcelRequire94c2")
 
 //# sourceMappingURL=index.96e2502d.js.map

@@ -142,9 +142,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"kWquC":[function(require,module,exports,__globalThis) {
-var Refresh = require("28a6a69e9d20b690");
-var ErrorOverlay = require("51ce659ede580c2");
+})({"aQL8O":[function(require,module,exports,__globalThis) {
+var Refresh = require("f11b6b8f6a1f6f0b");
+var ErrorOverlay = require("f490fb404efab291");
 window.__REACT_REFRESH_VERSION_RUNTIME = '0.14.2';
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
@@ -164,11 +164,11 @@ window.addEventListener('parcelhmraccept', ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"28a6a69e9d20b690":"gF2HS","51ce659ede580c2":"hzIym"}],"gF2HS":[function(require,module,exports,__globalThis) {
+},{"f11b6b8f6a1f6f0b":"786KC","f490fb404efab291":"1dldy"}],"786KC":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("93b8343b3e355a5f");
+module.exports = require("96622d495519d4e");
 
-},{"93b8343b3e355a5f":"8h2s9"}],"8h2s9":[function(require,module,exports,__globalThis) {
+},{"96622d495519d4e":"hdge7"}],"hdge7":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-refresh-runtime.development.js
@@ -609,8 +609,8 @@ module.exports = require("93b8343b3e355a5f");
     exports.setSignature = setSignature;
 })();
 
-},{}],"hzIym":[function(require,module,exports,__globalThis) {
-var process = require("3dd49ed909d5c9c3");
+},{}],"1dldy":[function(require,module,exports,__globalThis) {
+var process = require("d1546958eb39fdcf");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2340,7 +2340,7 @@ var process = require("3dd49ed909d5c9c3");
     ]);
 });
 
-},{"3dd49ed909d5c9c3":"8MGn2"}],"8MGn2":[function(require,module,exports,__globalThis) {
+},{"d1546958eb39fdcf":"d5jf4"}],"d5jf4":[function(require,module,exports,__globalThis) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2485,7 +2485,7 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"bqmkx":[function(require,module,exports,__globalThis) {
+},{}],"bJlzE":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = "localhost";
 var HMR_PORT = 1234;
@@ -2968,11 +2968,11 @@ document.body.append(container);
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"azdf2","react":"6HdAL","react-dom/client":"kpoEC","./components/content":"9e2Ej","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lGCvP"}],"azdf2":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./components/content":"9e2Ej","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("4a51f345d5509e7a");
+module.exports = require("ee51401569654d91");
 
-},{"4a51f345d5509e7a":"1HvNj"}],"1HvNj":[function(require,module,exports,__globalThis) {
+},{"ee51401569654d91":"48uCM"}],"48uCM":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-jsx-dev-runtime.development.js
@@ -2984,7 +2984,7 @@ module.exports = require("4a51f345d5509e7a");
  */ 'use strict';
 (function() {
     'use strict';
-    var React = require("d54164b73c4f1df3");
+    var React = require("58362d9d82be395f");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -3816,11 +3816,11 @@ module.exports = require("4a51f345d5509e7a");
     exports.jsxDEV = jsxDEV$1;
 })();
 
-},{"d54164b73c4f1df3":"6HdAL"}],"6HdAL":[function(require,module,exports,__globalThis) {
+},{"58362d9d82be395f":"21dqq"}],"21dqq":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("c39d1112defea06c");
+module.exports = require("a569817e6ea559f6");
 
-},{"c39d1112defea06c":"kwG2P"}],"kwG2P":[function(require,module,exports,__globalThis) {
+},{"a569817e6ea559f6":"6YvXz"}],"6YvXz":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react.development.js
@@ -5687,9 +5687,9 @@ module.exports = require("c39d1112defea06c");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"kpoEC":[function(require,module,exports,__globalThis) {
+},{}],"lOjBx":[function(require,module,exports,__globalThis) {
 'use strict';
-var m = require("ba932615d03ad932");
+var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -5708,7 +5708,7 @@ exports.hydrateRoot = function(c, h, o) {
     }
 };
 
-},{"ba932615d03ad932":"eZ7vI"}],"eZ7vI":[function(require,module,exports,__globalThis) {
+},{"aaccff5d309d9239":"j6uA9"}],"j6uA9":[function(require,module,exports,__globalThis) {
 'use strict';
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function') return;
@@ -5722,9 +5722,9 @@ function checkDCE() {
     // a false positive.
     throw new Error('^_^');
 }
-module.exports = require("16a63809d0c855d7");
+module.exports = require("b0f0e6b9e8349dac");
 
-},{"16a63809d0c855d7":"61qFu"}],"61qFu":[function(require,module,exports,__globalThis) {
+},{"b0f0e6b9e8349dac":"3iA9v"}],"3iA9v":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * react-dom.development.js
@@ -5737,8 +5737,8 @@ module.exports = require("16a63809d0c855d7");
 (function() {
     'use strict';
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("99de0446dddd0b09");
-    var Scheduler = require("79e87e1e6f01a002");
+    var React = require("6f0162e9ab224cd4");
+    var Scheduler = require("8ad4ca65319d28a7");
     var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     var suppressWarning = false;
     function setSuppressWarning(newSuppressWarning) {
@@ -26753,11 +26753,11 @@ module.exports = require("16a63809d0c855d7");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{"99de0446dddd0b09":"6HdAL","79e87e1e6f01a002":"9KcUC"}],"9KcUC":[function(require,module,exports,__globalThis) {
+},{"6f0162e9ab224cd4":"21dqq","8ad4ca65319d28a7":"juvHo"}],"juvHo":[function(require,module,exports,__globalThis) {
 'use strict';
-module.exports = require("6dd06a6d217f614c");
+module.exports = require("ef03b89c8fe2794e");
 
-},{"6dd06a6d217f614c":"74NoR"}],"74NoR":[function(require,module,exports,__globalThis) {
+},{"ef03b89c8fe2794e":"RqdIf"}],"RqdIf":[function(require,module,exports,__globalThis) {
 /**
  * @license React
  * scheduler.development.js
@@ -27230,12 +27230,12 @@ const Content = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _botButtonDefault.default), {}, void 0, false, {
             fileName: "src/components/content.tsx",
-            lineNumber: 9,
+            lineNumber: 10,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/content.tsx",
-        lineNumber: 7,
+        lineNumber: 8,
         columnNumber: 5
     }, undefined);
 };
@@ -27249,7 +27249,7 @@ $RefreshReg$(_c, "Content");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"azdf2","react":"6HdAL","./BotButton":"kck6a","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lGCvP"}],"kck6a":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./BotButton":"kck6a","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kck6a":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$b6c1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27262,43 +27262,221 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _vsc = require("react-icons/vsc");
+var _s = $RefreshSig$();
 const BotButton = ()=>{
+    _s();
+    const [isOpen, setIsOpen] = (0, _react.useState)(false);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-            style: {
-                position: "fixed",
-                right: "20px",
-                top: "80%",
-                backgroundColor: "black",
-                color: "white",
-                border: "none",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: "10px",
-                borderRadius: "12px"
-            },
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _vsc.VscRobot), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>setIsOpen(!isOpen),
                 style: {
-                    color: "white",
-                    fontSize: "30px"
-                }
+                    position: "fixed",
+                    right: "20px",
+                    top: "80%",
+                    backgroundColor: isOpen ? "white" : "black",
+                    color: isOpen ? "black" : "white",
+                    border: isOpen ? "1px solid black" : "none",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "10px",
+                    borderRadius: "12px",
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                    animation: isOpen ? "bounce 0.5s" : "none",
+                    transform: isOpen ? "scale(1.1)" : "scale(1)"
+                },
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _vsc.VscRobot), {
+                    style: {
+                        color: isOpen ? "black" : "white",
+                        fontSize: "30px",
+                        transform: isOpen ? "rotate(360deg)" : "rotate(0deg)",
+                        transition: "all 0.3s ease"
+                    }
+                }, void 0, false, {
+                    fileName: "src/components/BotButton.tsx",
+                    lineNumber: 30,
+                    columnNumber: 9
+                }, undefined)
             }, void 0, false, {
                 fileName: "src/components/BotButton.tsx",
-                lineNumber: 23,
+                lineNumber: 10,
+                columnNumber: 7
+            }, undefined),
+            isOpen && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                style: {
+                    position: "fixed",
+                    right: "20px",
+                    bottom: "calc(20% + 60px)",
+                    width: "410px",
+                    backgroundColor: "white",
+                    borderRadius: "12px",
+                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                    border: "1px solid #e2e8f0",
+                    padding: "16px",
+                    zIndex: 1000,
+                    animation: "slideIn 0.3s ease-out",
+                    opacity: isOpen ? 1 : 0,
+                    transform: isOpen ? "translateY(0)" : "translateY(20px)"
+                },
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        style: {
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            marginBottom: "12px"
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                                style: {
+                                    margin: 0,
+                                    fontSize: "18px",
+                                    fontWeight: "600",
+                                    color: "black",
+                                    borderBottom: "1px solid black",
+                                    animation: "fadeIn 0.5s ease-in"
+                                },
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                    children: isOpen ? "AI-Powered Code Analysis in Action! \uD83E\uDD16" : "Tc_Analyzers"
+                                }, void 0, false, {
+                                    fileName: "src/components/BotButton.tsx",
+                                    lineNumber: 69,
+                                    columnNumber: 15
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/BotButton.tsx",
+                                lineNumber: 61,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                                fileName: "src/components/BotButton.tsx",
+                                lineNumber: 74,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                onClick: ()=>setIsOpen(false),
+                                style: {
+                                    border: "none",
+                                    background: "none",
+                                    cursor: "pointer",
+                                    fontSize: "20px",
+                                    color: "#666",
+                                    transition: "transform 0.2s"
+                                },
+                                onMouseEnter: (e)=>{
+                                    e.currentTarget.style.transform = "rotate(90deg)";
+                                },
+                                onMouseLeave: (e)=>{
+                                    e.currentTarget.style.transform = "rotate(0deg)";
+                                },
+                                children: "\xd7"
+                            }, void 0, false, {
+                                fileName: "src/components/BotButton.tsx",
+                                lineNumber: 75,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/BotButton.tsx",
+                        lineNumber: 55,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        style: {
+                            maxHeight: "400px",
+                            overflowY: "auto",
+                            animation: "fadeIn 0.5s ease-in"
+                        },
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            style: {
+                                fontSize: "16px",
+                                lineHeight: "1.5",
+                                color: "black",
+                                animation: "slideUp 0.5s ease-out"
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                    children: "Time Complexity :- "
+                                }, void 0, false, {
+                                    fileName: "src/components/BotButton.tsx",
+                                    lineNumber: 108,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                    fileName: "src/components/BotButton.tsx",
+                                    lineNumber: 108,
+                                    columnNumber: 41
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("b", {
+                                    children: "Space Complexity :- "
+                                }, void 0, false, {
+                                    fileName: "src/components/BotButton.tsx",
+                                    lineNumber: 109,
+                                    columnNumber: 15
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/BotButton.tsx",
+                            lineNumber: 101,
+                            columnNumber: 13
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/BotButton.tsx",
+                        lineNumber: 95,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/BotButton.tsx",
+                lineNumber: 40,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("style", {
+                children: `
+          @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+          }
+          @keyframes slideIn {
+            from { 
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to { 
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          @keyframes slideUp {
+            from { 
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to { 
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `
+            }, void 0, false, {
+                fileName: "src/components/BotButton.tsx",
+                lineNumber: 114,
                 columnNumber: 7
             }, undefined)
-        }, void 0, false, {
-            fileName: "src/components/BotButton.tsx",
-            lineNumber: 8,
-            columnNumber: 9
-        }, undefined)
-    }, void 0, false, {
+        ]
+    }, void 0, true, {
         fileName: "src/components/BotButton.tsx",
-        lineNumber: 6,
+        lineNumber: 8,
         columnNumber: 5
     }, undefined);
 };
+_s(BotButton, "+sus0Lb0ewKHdwiUhiTAJFoFyQ0=");
 _c = BotButton;
 exports.default = BotButton;
 var _c;
@@ -27309,7 +27487,7 @@ $RefreshReg$(_c, "BotButton");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"azdf2","react":"6HdAL","react-icons/vsc":"fz2K1","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"lGCvP"}],"fz2K1":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-icons/vsc":"dJ1w5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dJ1w5":[function(require,module,exports,__globalThis) {
 // THIS FILE IS AUTO GENERATED
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -38180,7 +38358,7 @@ function VscZoomOut(props) {
     })(props);
 }
 
-},{"../lib/index.mjs":"8nnTh","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O"}],"8nnTh":[function(require,module,exports,__globalThis) {
+},{"../lib/index.mjs":"1Rz6v","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1Rz6v":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _iconsManifestMjs = require("./iconsManifest.mjs");
@@ -38190,7 +38368,7 @@ parcelHelpers.exportAll(_iconBaseMjs, exports);
 var _iconContextMjs = require("./iconContext.mjs");
 parcelHelpers.exportAll(_iconContextMjs, exports);
 
-},{"./iconsManifest.mjs":"2nWwx","./iconBase.mjs":"djqvb","./iconContext.mjs":"8lNic","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O"}],"2nWwx":[function(require,module,exports,__globalThis) {
+},{"./iconsManifest.mjs":"5ibC9","./iconBase.mjs":"3bt4B","./iconContext.mjs":"18TpC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5ibC9":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "IconsManifest", ()=>IconsManifest);
@@ -38414,7 +38592,7 @@ var IconsManifest = [
     }
 ];
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O"}],"3QV8O":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -38444,7 +38622,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"djqvb":[function(require,module,exports,__globalThis) {
+},{}],"3bt4B":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "GenIcon", ()=>GenIcon);
@@ -38571,7 +38749,7 @@ function IconBase(props) {
     return (0, _iconContextMjs.IconContext) !== undefined ? /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _iconContextMjs.IconContext).Consumer, null, (conf)=>elem(conf)) : elem((0, _iconContextMjs.DefaultContext));
 }
 
-},{"react":"6HdAL","./iconContext.mjs":"8lNic","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O"}],"8lNic":[function(require,module,exports,__globalThis) {
+},{"react":"21dqq","./iconContext.mjs":"18TpC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"18TpC":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "DefaultContext", ()=>DefaultContext);
@@ -38587,10 +38765,10 @@ var DefaultContext = {
 };
 var IconContext = (0, _reactDefault.default).createContext && /*#__PURE__*/ (0, _reactDefault.default).createContext(DefaultContext);
 
-},{"react":"6HdAL","@parcel/transformer-js/src/esmodule-helpers.js":"3QV8O"}],"lGCvP":[function(require,module,exports,__globalThis) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports,__globalThis) {
 "use strict";
-var Refresh = require("c8a56b24bd69684b");
-var { version } = require("b73042f8395b012");
+var Refresh = require("7422ead32dcc1e6b");
+var { version } = require("630b62916b1ae0e7");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -38729,9 +38907,9 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"c8a56b24bd69684b":"gF2HS","b73042f8395b012":"bwWSp"}],"bwWSp":[function(require,module,exports,__globalThis) {
+},{"7422ead32dcc1e6b":"786KC","630b62916b1ae0e7":"4SQxb"}],"4SQxb":[function(require,module,exports,__globalThis) {
 module.exports = JSON.parse("{\"name\":\"react-refresh\",\"description\":\"React is a JavaScript library for building user interfaces.\",\"keywords\":[\"react\"],\"version\":\"0.14.2\",\"homepage\":\"https://reactjs.org/\",\"bugs\":\"https://github.com/facebook/react/issues\",\"license\":\"MIT\",\"files\":[\"LICENSE\",\"README.md\",\"babel.js\",\"runtime.js\",\"cjs/\",\"umd/\"],\"main\":\"runtime.js\",\"exports\":{\".\":\"./runtime.js\",\"./runtime\":\"./runtime.js\",\"./babel\":\"./babel.js\",\"./package.json\":\"./package.json\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/facebook/react.git\",\"directory\":\"packages/react\"},\"engines\":{\"node\":\">=0.10.0\"},\"devDependencies\":{\"react-16-8\":\"npm:react@16.8.0\",\"react-dom-16-8\":\"npm:react-dom@16.8.0\",\"scheduler-0-13\":\"npm:scheduler@0.13.0\"}}");
 
-},{}]},["kWquC","bqmkx","eVCOy"], "eVCOy", "parcelRequire94c2")
+},{}]},["aQL8O","bJlzE","eVCOy"], "eVCOy", "parcelRequire94c2")
 
 //# sourceMappingURL=content.js.map
