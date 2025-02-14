@@ -26,11 +26,14 @@
     
     "content_scripts": [
       {
-        "matches": ["*://*.leetcode.com/*"],
+        "matches": ["https://leetcode.com/problems/*"],
         "js": ["src/content.tsx"]
       }
     ],
     "background": {
       "service_worker": "src/background.ts"
+    },
+    "content_security_policy": {
+      "extension_pages": "script-src 'self' 'wasm-unsafe-eval' 'sha256-yt+SNVxRkIi6H6yb7ndFuZM1esMX9esg3UpRHaTsyVk=' http://localhost:* http://127.0.0.1:*; object-src 'self'"
     }
   }

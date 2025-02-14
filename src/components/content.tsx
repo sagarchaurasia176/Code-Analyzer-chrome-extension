@@ -1,10 +1,12 @@
 import React from 'react'
+import BotButton from './BotButton'
 
+// main content component Which injects the bot button
 const Content = () => {
   return (
     <div>
-      {/* here we are creating the button for the analyze button */}
-      <button style={{backgroundColor:"black", color:"white" , display:"flex" , justifyContent:"flex-end"}}>Analyze</button>
+    {/* Button-bot */}
+      <BotButton/>
     </div>
   )
 }

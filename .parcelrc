@@ -1,6 +1,5 @@
 {
   "extends": "@parcel/config-webextension",
-  "reporters": ["...", "parcel-reporter-static-files-copy"],
   "transformers": {
     "*.{js,mjs,jsx,cjs,ts,tsx}": [
       "@parcel/transformer-js",
