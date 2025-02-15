@@ -23,6 +23,4 @@ This extension helps you analyze the time and space complexity of algorithms dir
 
 
 ## Screenshots
-![Screenshot 2025-02-05 034058](https://github.com/user-attachments/assets/24328e75-64b1-4886-84cb-2da8bd127fa7)
-![Screenshot 2025-02-05 034108](https://github.com/user-attachments/assets/dc0d83bb-effe-4387-9bf0-2965e48dc9e6)
-
+![Screenshot 2025-02-14 124310](https://github.com/user-attachments/assets/ada732a5-f273-4f89-be3c-f9e9e22ae5b0)
