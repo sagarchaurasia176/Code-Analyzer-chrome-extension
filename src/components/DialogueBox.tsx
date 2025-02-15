@@ -47,6 +47,7 @@ const DialogueBox = ({isOpen, setIsOpen}:{isOpen:boolean, setIsOpen:React.Dispat
             overflowY: "auto",
             animation: "fadeIn 0.5s ease-in"
           }}>
+            {/* Chat or content here */}
             {/* Add your chat or content here */}
             <span style={{ 
               fontSize: "16px", 
