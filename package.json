@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Chrome extension for analyzing LeetCode problem complexity",
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@types/chrome": "^0.0.304",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.2.19",
+    "dotenv": "^16.4.7",
     "framer-motion": "^12.4.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -23,6 +25,9 @@
     "process": "^0.11.10",
     "typescript": "^5.7.3"
   },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
   "scripts": {
     "start": "parcel watch manifest.json index.html src/background.ts src/content.tsx --host localhost --config @parcel/config-webextension",
     "build": "parcel build manifest.json index.html src/background.ts src/content.tsx --config @parcel/config-webextension",
