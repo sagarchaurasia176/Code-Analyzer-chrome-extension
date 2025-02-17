@@ -4,9 +4,13 @@
     "version": "1.0", 
     "description": "Injects context.tsx when visiting LeetCode",
     "permissions": [
-      "tabs"
+      "activeTab",
+      "scripting"
     ],
-    "host_permissions": ["*://*.leetcode.com/*"],
+    "host_permissions": [
+      "https://*.leetcode.com/*",
+      "https://*.googleapis.com/*"
+    ],
     "action": {
       "default_popup": "index.html",
       "default_icon": {

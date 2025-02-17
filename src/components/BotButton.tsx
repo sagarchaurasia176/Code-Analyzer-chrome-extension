@@ -1,31 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { VscRobot } from "react-icons/vsc";
 import DialogueBox from './DialogueBox';
-// GeminApi Detect logics 
-import {SYSTEM_PROMPT} from '../constant/Prompts';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Bot Button Component
-
 const BotButton = () => {
-  const [GenAIKey, setGenAIKey] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    // Wait for window.ENV to be defined
-    const checkEnv = () => {
-    const Gemini = "AIzaSyA5rZAN7CU6LzTZPJuKi1ethXqWDKa30bM";     
-    console.log("gemein api")
-    console.log(Gemini)
-    };
-    checkEnv();
-  }, []);
-  
   // GeminApi prompt logics 
   const Fn = () => {
     setIsOpen(!isOpen);
   }
-
 // Then return the button component
   return (
     <div>
