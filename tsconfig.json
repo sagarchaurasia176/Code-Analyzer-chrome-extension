@@ -26,7 +26,7 @@
 
     /* Modules */
     "module": "ESNext",
-    // "moduleResolution": "node",                          /* Changed from "bundler" to "node" to resolve vite/client issue */
+    "moduleResolution": "node",                          /* Changed from "bundler" to "node" to resolve vite/client issue */
     // "types": ["vite/client", "node"],                   /* Added "node" type to support vite/client */
     // "rootDir": "./",                                  /* Specify the root folder within your source files. */
     // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
