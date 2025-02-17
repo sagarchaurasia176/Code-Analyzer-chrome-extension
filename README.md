@@ -67,13 +67,48 @@ cd Analyzer-chrome-extension
 
 ### Step 2: Install Dependencies
 ```
-npm install
+pnpm install
 ```
 
 ### Step 3: Build the Extension using Parcel
 ```
-npm run build
+pnpm build
 ```
+
+
+### Step 3: To run Project Type,
+```
+pnpm start
+```
+
+
+### Step 3: Make Sure to Create .parcelrc (copy and paste in your file)
+```
+{
+  "extends": "@parcel/config-webextension",
+  "transformers": {
+    "*.{js,mjs,jsx,cjs,ts,tsx}": [
+      "@parcel/transformer-js",
+      "@parcel/transformer-react-refresh-wrap"
+    ]
+  },
+  "namers": ["@parcel/namer-default"],
+  "packagers": {
+    "*.html": "@parcel/packager-html",
+    "*.js": "@parcel/packager-js",
+    "*.css": "@parcel/packager-css"
+  },
+  "optimizers": {
+    "*.js": ["@parcel/optimizer-terser"]
+  },
+  "reporters": ["...", "parcel-reporter-static-files-copy"]
+}
+```
+
+
+
+
+
 
 ### Step 4: Load the Extension in Chrome
 1. Open **chrome://extensions/** in your Chrome browser.
