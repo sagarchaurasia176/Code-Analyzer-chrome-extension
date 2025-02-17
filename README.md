@@ -57,11 +57,29 @@ With its seamless integration into the browser, TC-Analyzer empowers developers,
 
 ---
 
-## Installation
+## Installation & Usage
 
-1. **Download the Extension**: Install it from the Chrome Web Store (link to be added).
-2. **Enable Permissions**: Allow access to analyze code on supported websites.
-3. **Start Analyzing**: Click the extension icon whenever you want to check complexity.
+### Step 1: Clone the Repository
+```
+git clone https://github.com/sagarchaurasia176/Analyzer-chrome-extension
+cd Analyzer-chrome-extension
+```
+
+### Step 2: Install Dependencies
+```
+npm install
+```
+
+### Step 3: Build the Extension using Parcel
+```
+npm run build
+```
+
+### Step 4: Load the Extension in Chrome
+1. Open **chrome://extensions/** in your Chrome browser.
+2. Enable **Developer mode** (toggle switch at the top right).
+3. Click **Load unpacked** and select the `dist` folder inside the cloned repository.
+4. The extension should now be available in your browser toolbar.
 
 ---
 
@@ -73,20 +91,11 @@ With its seamless integration into the browser, TC-Analyzer empowers developers,
 
 ---
 
-## Future Enhancements
-
-🚀 **Support for More Languages** – Currently optimized for JavaScript and Python, with plans to expand support to C++, Java, and other languages.
-🚀 **Advanced AI Insights** – Enhanced AI-powered suggestions for algorithm improvement.
-🚀 **Code Snippet Recommendations** – Generate optimized code snippets based on complexity analysis.
-
----
 
 ## Contribute
 
 We welcome contributions! If you have ideas for improvements or want to report bugs, feel free to check out the project repository and contribute to its development.
-
-**GitHub Repository:** [GitHub Link](#)
-
 ---
 
 With **TC-Analyzer**, optimizing algorithms has never been easier. Whether you're a beginner learning data structures or a seasoned developer working on performance-critical applications, this extension is the perfect tool to refine your code efficiently!
+
