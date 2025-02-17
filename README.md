@@ -1,26 +1,136 @@
-## Tc-Analyzer_Chrome Extension
+# Tc-Analyzer Chrome Extension
 
-Optimize your algorithms with our easy-to-use Time Complexity Analyzer Chrome Extension. 
-This extension helps you analyze the time and space complexity of algorithms directly in your browser, making it easier to optimize your code while browsing or coding in real-time.
+## Overview
+
+The **Time Complexity Analyzer (TC-Analyzer) Chrome Extension** is designed to help developers optimize their algorithms by providing instant insights into time and space complexity. Whether you are browsing coding platforms, reviewing code snippets, or working on your own projects, this extension simplifies complexity analysis, allowing you to write more efficient and optimized code.
+
+With its seamless integration into the browser, TC-Analyzer empowers developers, students, and coding enthusiasts to analyze their code on the go without needing external tools. The extension leverages **Gemini AI** to predict and provide detailed complexity analysis, making it a powerful assistant for algorithmic efficiency.
 
 ---
 
 ## Features
 
-- **Time Complexity Analysis**: Analyze the time complexity of algorithms in big-O notation.
-- **Space Complexity Analysis**: Get insights into the space complexity of your code.
-- **User-Friendly Interface**: A clean and simple interface embedded within the Chrome browser.
-- **Integration with Gemini AI**: Leverages AI to predict time and space complexity for better optimization.
+### 🔹 **Time Complexity Analysis**
+- Automatically detects and evaluates the time complexity of algorithms.
+- Displays results in **Big-O notation**.
+- Helps identify potential performance bottlenecks in your code.
 
+### 🔹 **Space Complexity Analysis**
+- Estimates the memory usage of your code.
+- Provides insights into how efficiently data structures are used.
+
+### 🔹 **Real-Time Analysis**
+- Works directly in the Chrome browser, making it easy to analyze code while browsing online.
+- Supports integration with popular coding platforms like **LeetCode, Codeforces, GeeksforGeeks, and GitHub**.
+
+### 🔹 **AI-Powered Optimization**
+- Uses **Gemini AI** to provide more accurate predictions and suggestions for improving algorithmic efficiency.
+- Highlights alternative approaches to optimize your code.
+
+### 🔹 **User-Friendly Interface**
+- Clean and intuitive design.
+- Quick installation and easy access directly from the browser toolbar.
+
+### 🔹 **Secure Authentication & Cloud Storage**
+- Utilizes **Firebase Authentication** for secure sign-in.
+- Saves analysis history in a **Firebase database** for future reference.
+
+---
 
 ## Tech Stack
 
-**Frontend : ** typescript , tailwindcss,and other css lib
+- **Frontend:** TypeScript, Tailwind CSS, and other CSS libraries
+- **Authentication & Database:** Firebase
+- **AI Integration:** Gemini AI
+- **Build Tool:** Parcel for efficient bundling
+- **Browser Compatibility:** Optimized for Chrome
 
-**Auth + Database:** Firebase
+---
 
-**AI: ** Gemini Ai
+## Why Use TC-Analyzer?
 
+✅ **Boost Coding Productivity:** Get real-time complexity analysis while coding.
+✅ **Improve Algorithm Efficiency:** Identify bottlenecks and optimize your code with AI-driven suggestions.
+✅ **Perfect for Competitive Programmers & Developers:** Analyze problems and solutions instantly without manual calculations.
+✅ **Seamless Integration:** Works effortlessly on online coding platforms and GitHub repositories.
+✅ **Easy to Use:** One-click access to analyze code on any website.
+
+---
+
+## Installation & Usage
+
+### Step 1: Clone the Repository
+```
+git clone https://github.com/sagarchaurasia176/Analyzer-chrome-extension
+cd Analyzer-chrome-extension
+```
+
+### Step 2: Install Dependencies
+```
+pnpm install
+```
+
+### Step 3: Build the Extension using Parcel
+```
+pnpm build
+```
+
+
+### Step 3: To run Project Type,
+```
+pnpm start
+```
+
+
+### Step 3: Make Sure to Create .parcelrc (copy and paste in your file)
+```
+{
+  "extends": "@parcel/config-webextension",
+  "transformers": {
+    "*.{js,mjs,jsx,cjs,ts,tsx}": [
+      "@parcel/transformer-js",
+      "@parcel/transformer-react-refresh-wrap"
+    ]
+  },
+  "namers": ["@parcel/namer-default"],
+  "packagers": {
+    "*.html": "@parcel/packager-html",
+    "*.js": "@parcel/packager-js",
+    "*.css": "@parcel/packager-css"
+  },
+  "optimizers": {
+    "*.js": ["@parcel/optimizer-terser"]
+  },
+  "reporters": ["...", "parcel-reporter-static-files-copy"]
+}
+```
+
+
+
+
+
+
+### Step 4: Load the Extension in Chrome
+1. Open **chrome://extensions/** in your Chrome browser.
+2. Enable **Developer mode** (toggle switch at the top right).
+3. Click **Load unpacked** and select the `dist` folder inside the cloned repository.
+4. The extension should now be available in your browser toolbar.
+
+---
 
 ## Screenshots
+
 ![Screenshot 2025-02-14 124310](https://github.com/user-attachments/assets/ada732a5-f273-4f89-be3c-f9e9e22ae5b0)
+![Screenshot 2025-02-18 005549](https://github.com/user-attachments/assets/db459fc4-0da7-45f2-8aa9-f8671c98df8b)
+![Screenshot 2025-02-16 232643](https://github.com/user-attachments/assets/e08efe11-4361-437a-98e6-b8c3259e21d6)
+
+---
+
+
+## Contribute
+
+We welcome contributions! If you have ideas for improvements or want to report bugs, feel free to check out the project repository and contribute to its development.
+---
+
+With **TC-Analyzer**, optimizing algorithms has never been easier. Whether you're a beginner learning data structures or a seasoned developer working on performance-critical applications, this extension is the perfect tool to refine your code efficiently!
+
