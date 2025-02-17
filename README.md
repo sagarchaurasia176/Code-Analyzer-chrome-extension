@@ -107,9 +107,6 @@ pnpm start
 
 
 
-
-
-
 ### Step 4: Load the Extension in Chrome
 1. Open **chrome://extensions/** in your Chrome browser.
 2. Enable **Developer mode** (toggle switch at the top right).
@@ -123,7 +120,8 @@ pnpm start
 ![Screenshot 2025-02-14 124310](https://github.com/user-attachments/assets/ada732a5-f273-4f89-be3c-f9e9e22ae5b0)
 ![Screenshot 2025-02-18 005549](https://github.com/user-attachments/assets/db459fc4-0da7-45f2-8aa9-f8671c98df8b)
 ![Screenshot 2025-02-16![Screenshot 2025-02-18 015532](https://github.com/user-attachments/assets/a417cb13-8a45-4517-b56d-6c98d5f7deca)
- 232643](https://github.com/user-attachments/assets/e08efe11-4361-437a-98e6-b8c3259e21d6)
+![Screenshot 2025-02-18 015532](https://github.com/user-attachments/assets/19e8e3e9-667c-4d57-b7c4-6dd22eda670c)
+
 
 ---
 
