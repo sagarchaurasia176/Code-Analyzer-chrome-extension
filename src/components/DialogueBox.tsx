@@ -1,28 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GEMINI_API_KEY } from '../constant/config';
-import { VscLoading } from 'react-icons/vsc';
-import { indicators } from '../utils/indicator';
-import ComplexityPopupBox from './ComplexityPopupBox';
-
+import React, { useEffect, useState } from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GEMINI_API_KEY } from "../constant/config";
+import { VscLoading } from "react-icons/vsc";
+import { indicators } from "../utils/indicator";
+import ComplexityPopupBox from "./ComplexityPopupBox";
 
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
-const DialogueBox = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
-  const [complexity, setComplexity] = useState({ time: '', space: '' });
+const DialogueBox = ({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const [complexity, setComplexity] = useState({ time: "", space: "" });
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const detectLanguage = (code: string): string => {
     // Common language indicators
     let maxScore = 0;
-    let detectedLang = 'unknown';
+    let detectedLang = "unknown";
 
     // Loop through each language and its patterns in the indicators object
     Object.keys(indicators).forEach((lang) => {
       const patterns = indicators[lang as keyof typeof indicators];
-      const score = patterns.reduce((count: number, pattern: string) =>
-        count + (code.includes(pattern) ? 1 : 0), 0);
+      const score = patterns.reduce(
+        (count: number, pattern: string) =>
+          count + (code.includes(pattern) ? 1 : 0),
+        0
+      );
       if (score > maxScore) {
         maxScore = score;
         detectedLang = lang;
@@ -36,10 +44,10 @@ const DialogueBox = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.
   const getLeetCodeEditorContent = () => {
     // Try multiple selector patterns used by LeetCode
     const editorSelectors = [
-      '.monaco-editor',
+      ".monaco-editor",
       '[role="presentation"]',
-      '#editor',
-      '.CodeMirror'
+      "#editor",
+      ".CodeMirror",
     ];
 
     let editor = null;
@@ -49,30 +57,33 @@ const DialogueBox = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.
     }
 
     if (!editor) {
-      console.log('Editor not found');
-      return '';
+      console.log("Editor not found");
+      return "";
     }
 
     // Try different ways to get code content
-    const codeContainer = editor.querySelector('.view-lines') ||
-      editor.querySelector('.CodeMirror-lines') ||
+    const codeContainer =
+      editor.querySelector(".view-lines") ||
+      editor.querySelector(".CodeMirror-lines") ||
       editor;
 
     if (!codeContainer) {
-      console.log('Code container not found');
-      return '';
+      console.log("Code container not found");
+      return "";
     }
 
-    const codeLines = codeContainer.querySelectorAll('.view-line, .CodeMirror-line');
+    const codeLines = codeContainer.querySelectorAll(
+      ".view-line, .CodeMirror-line"
+    );
     if (!codeLines.length) {
-      console.log('No code lines found');
-      return '';
+      console.log("No code lines found");
+      return "";
     }
 
     const code = Array.from(codeLines)
-      .map(line => line.textContent?.trim() || '')
-      .filter(line => line) // Remove empty lines
-      .join('\n');
+      .map((line) => line.textContent?.trim() || "")
+      .filter((line) => line) // Remove empty lines
+      .join("\n");
 
     return code;
   };
@@ -85,19 +96,19 @@ const DialogueBox = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.
       const code = getLeetCodeEditorContent();
       if (!code) {
         setComplexity({
-          time: 'No code found in editor',
-          space: 'No code found in editor'
+          time: "No code found in editor",
+          space: "No code found in editor",
         });
         return;
       }
 
       // Add a minimum delay for better UX
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const detectedLanguage = detectLanguage(code);
-      console.log('Detected language:', detectedLanguage);
+      console.log("Detected language:", detectedLanguage);
 
-      const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
       // 3. Create the prompt for analysis
       const prompt = `
@@ -124,15 +135,18 @@ const DialogueBox = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.
 
       // 6. Update the UI with results
       setComplexity({
-        time: timeMatch ? timeMatch[0].split(': ')[1].trim() : 'Unable to determine',
-        space: spaceMatch ? spaceMatch[0].split(': ')[1].trim() : 'Unable to determine'
+        time: timeMatch
+          ? timeMatch[0].split(": ")[1].trim()
+          : "Unable to determine",
+        space: spaceMatch
+          ? spaceMatch[0].split(": ")[1].trim()
+          : "Unable to determine",
       });
-
     } catch (error) {
-      console.error('Error analyzing code:', error);
+      console.error("Error analyzing code:", error);
       setComplexity({
-        time: 'Error analyzing code. Please try again.',
-        space: 'Error analyzing code. Please try again.'
+        time: "Error analyzing code. Please try again.",
+        space: "Error analyzing code. Please try again.",
       });
     } finally {
       setLoading(false);
@@ -168,18 +182,17 @@ const DialogueBox = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: React.
 
   return (
     <div>
-      <ComplexityPopupBox 
-        isOpen={isOpen} 
-        setIsOpen={setIsOpen} 
-        complexity={complexity} 
-        progress={progress} 
-        loading={loading} 
+      <ComplexityPopupBox
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        complexity={complexity}
+        progress={progress}
+        loading={loading}
         setLoading={setLoading}
         setProgress={setProgress}
       />
-     
     </div>
-  )
-}
+  );
+};
 
-export default DialogueBox
+export default DialogueBox;

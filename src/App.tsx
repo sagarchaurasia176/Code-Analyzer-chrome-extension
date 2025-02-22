@@ -1,12 +1,13 @@
-import React from 'react'
-import './App.css'
-// import "@radix-ui/themes/styles.css";
+import React from "react";
+import Popup from "./components/Popup"; // Import the Popup component
+import "./App.css";
 
 const App = () => {
   return (
     <div>
-      <h1>Complexity by sagar</h1>
+      <Popup /> {/* Render the Popup component */}
     </div>
-  )
-}
-export default App
+  );
+};
+
+export default App;
