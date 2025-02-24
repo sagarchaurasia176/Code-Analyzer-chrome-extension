@@ -110,7 +110,11 @@ const ToggleContainer = styled.div`
   cursor: pointer;
 `;
 
-const ToggleSwitch = styled.div`
+interface ToggleSwitchProps {
+  isDark: boolean;
+}
+
+const ToggleSwitch = styled.div<ToggleSwitchProps>`
   width: 40px;
   height: 20px;
   background: ${(props) => (props.isDark ? "#ff9900" : "#ccc")};
