@@ -1,0 +1,6 @@
+APPLY SIMPLE CONDITION THAT
+=============================================================
+- IF USER CLICK THEN SHOW , BUTTON OTHERWISE DONT SHOW
+- ADD GEMINI API KEY 
+
+
