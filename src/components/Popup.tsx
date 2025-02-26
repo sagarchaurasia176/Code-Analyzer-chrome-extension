@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+// import {useGlobalContext} from "../context/ContextManager";
 
+// Popup - component.tsx
 const Popup = () => {
   const [apiKey, setApiKey] = useState("");
   // Actual logic start from there 
   const [model, setModel] = useState("Gemini 1.5 Flash");
   const [isDarkMode, setIsDarkMode] = useState(true);
+  // used context api here
+  // const {fn} = useGlobalContext()
+
+
 
   return (
     <div className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"} w-96 p-6 rounded-lg shadow-lg border transition-all`}>
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-lg font-bold uppercase">TC - Analyzer</h1>
+        <h1 className="text-lg  border-b-2  font-bold">Complexity-Analyzer</h1>
         <button
           onClick={() => setIsDarkMode(!isDarkMode)}
           className="flex items-center gap-2 cursor-pointer text-sm"
@@ -30,24 +36,12 @@ const Popup = () => {
           className="w-full p-2 rounded bg-gray-200 text-black border border-gray-300 outline-none"
         >
           <option>Gemini 1.5 Flash</option>
-          <option>GPT-4</option>
+          <option>Chat-gpt</option>
+          <option>Claude AI</option>
         </select>
       </div>
-
-      <div className="mb-4">
-        <label htmlFor="apiKey" className="block text-sm font-semibold mb-1">Enter API Key</label>
-        <input
-          type="password"
-          id="apiKey"
-          value={apiKey}
-          onChange={(e) => setApiKey(e.target.value)}
-          placeholder="Enter your API key"
-          className="w-full p-2 rounded bg-gray-200 text-black border border-gray-300 outline-none"
-        />
-      </div>
-
-      <button className="w-full py-2 rounded bg-orange-500 text-white font-bold hover:opacity-90">Save API Key</button>
-      <button className="w-full py-2 mt-2 rounded bg-blue-500 text-white font-bold hover:opacity-90">Try for Free</button>
+     
+      <button className="w-full py-2 mt-2 rounded bg-blue-500 c cursor-pointer text-white font-bold hover:opacity-90">Try for Free</button>
     </div>
   );
 };

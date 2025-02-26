@@ -1,11 +1,13 @@
 {
     "manifest_version": 3,
-    "name": "LeetCode Context Injector",
+    "name": "Complexity Analyzer | Instantly Analyze Your Code Complexity ",
     "version": "1.0", 
-    "description": "Injects context.tsx when visiting LeetCode",
+    "description": "Stop guessing about your algorithm's performance. Our Chrome extension automatically analyzes your code and provides real-time Big O notation complexity insights.",
     "permissions": [
       "activeTab",
-      "scripting"
+      "scripting",
+        "storage",
+  "identity"
     ],
     "host_permissions": [
       "https://*.leetcode.com/*",
@@ -37,4 +39,6 @@
     "background": {
       "service_worker": "src/background.ts"
     }
+
   }
+

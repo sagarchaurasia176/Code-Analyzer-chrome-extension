@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { GEMINI_API_KEY } from "../constant/config";
+import { GEMINI_API_KEY } from '../constant/config';
 import { VscLoading } from "react-icons/vsc";
 import { indicators } from "../utils/indicator";
 import ComplexityPopupBox from "./ComplexityPopupBox";
 
+
+// Gen-ai configurations 
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 const DialogueBox = ({
@@ -108,7 +110,7 @@ const DialogueBox = ({
       const detectedLanguage = detectLanguage(code);
       console.log("Detected language:", detectedLanguage);
 
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
       // 3. Create the prompt for analysis
       const prompt = `
