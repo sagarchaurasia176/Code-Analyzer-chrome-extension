@@ -6,7 +6,7 @@ import {
   progressBarStyles,
   progressFillStyles,
   fadeScaleAnimation,
-} from "../utils/omplexityPopupBoxStyles"; // Ensure correct import
+} from "../utils/ComplexityPopupBoxStyles"; // Ensure correct import
 
 interface ComplexityPopupBoxProps {
   isOpen: boolean;
