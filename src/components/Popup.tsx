@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-// import {useGlobalContext} from "../context/ContextManager";
+import React, { useContext, useEffect, useState } from "react";
+import {useGlobalContext} from "../context/ContextManager";
 
 // Popup - component.tsx
 const Popup = () => {
@@ -7,10 +7,24 @@ const Popup = () => {
   // Actual logic start from there 
   const [model, setModel] = useState("Gemini 1.5 Flash");
   const [isDarkMode, setIsDarkMode] = useState(true);
-  // used context api here
-  // const {fn} = useGlobalContext()
+  // const {isDetect , setDetect} = useGlobalContext();
+  const [isDetect, setIsDetect] = useState<boolean>();
 
+  useEffect(() => {
+    chrome.storage.local.get("isDetect", (result) => {
+      if(result.isDetect !== undefined) {
+        setIsDetect(result.isDetect);
+      }
+    })
+  }, []);
 
+  const toggleDetect=  () => {
+    const newDetectState = !isDetect;
+    setIsDetect(newDetectState);
+
+    chrome.storage.local.set({isDetect: newDetectState});
+    chrome.runtime.sendMessage({ type: "TOGGLE_DETECT", payload: newDetectState });
+  }
 
   return (
     <div className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"} w-96 p-6 rounded-lg shadow-lg border transition-all`}>
@@ -27,6 +41,7 @@ const Popup = () => {
         </button>
       </div>
 
+      {/*  */}
       <div className="mb-4">
         <label htmlFor="model" className="block text-sm font-semibold mb-1">Select Model</label>
         <select
@@ -41,7 +56,8 @@ const Popup = () => {
         </select>
       </div>
      
-      <button className="w-full py-2 mt-2 rounded bg-blue-500 c cursor-pointer text-white font-bold hover:opacity-90">Try for Free</button>
+      <button onClick={toggleDetect}
+       className="w-full py-2 mt-2 rounded bg-blue-500 cursor-pointer text-white font-bold hover:opacity-90">Try for Free</button>
     </div>
   );
 };
