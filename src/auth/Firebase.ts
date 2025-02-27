@@ -1,21 +1,22 @@
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth"; // TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// // Your web app's Firebase configuration
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAAPJDieh6HGhJHmlWpi8eoKEJ7KhFdTng",
-//   authDomain: "tc-exten.firebaseapp.com",
-//   projectId: "tc-exten",
-//   storageBucket: "tc-exten.firebasestorage.app",
-//   messagingSenderId: "241939040487",
-//   appId: "1:241939040487:web:dd6795cb89ec72f8db3a42",
-//   measurementId: "G-S3E6DZ6XPF"
-// };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCEkJrdsq2JQSmYS4RruhAeBAHnvI255Q4",
+  authDomain: "chrome-extension-30398.firebaseapp.com",
+  projectId: "chrome-extension-30398",
+  storageBucket: "chrome-extension-30398.firebasestorage.app",
+  messagingSenderId: "339835576021",
+  appId: "1:339835576021:web:e68f67d9449d5bd9934c5c",
+  measurementId: "G-8YZYRSHB11",
+};
 
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+export { app, auth };
