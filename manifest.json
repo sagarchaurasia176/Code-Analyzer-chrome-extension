@@ -1,43 +1,49 @@
 {
-    "manifest_version": 3,
-    "name": "Complexity Analyzer | Instantly Analyze Your Code Complexity ",
-    "version": "1.0", 
-    "description": "Stop guessing about your algorithm's performance. Our Chrome extension automatically analyzes your code and provides real-time Big O notation complexity insights.",
-    "permissions": [
-      "activeTab",
-      "scripting",
-        "storage",
-  "identity"
-    ],
-    "host_permissions": [
-      "https://*.leetcode.com/*",
-      "https://*.googleapis.com/*"
-    ],
-    "action": {
-      "default_popup": "index.html",
-      "default_icon": {
-        "16": "./src/icons/expand.png",
-        "32": "./src/icons/expand.png", 
-        "48": "./src/icons/expand.png",
-        "128": "./src/icons/expand.png"
-      }
-    },
-  
-    "icons": {
-        "16": "./src/icons/expand.png",
-        "32": "./src/icons/expand.png",
-        "48": "./src/icons/expand.png",
-        "128": "./src/icons/expand.png"
-    },
-    
-    "content_scripts": [
-      {
-        "matches": ["https://leetcode.com/problems/*"],
-        "js": ["src/content.tsx"]
-      }
-    ],
-    "background": {
-      "service_worker": "src/background.ts"
-    }
-  }
+  "manifest_version": 3,
+  "name": "Complexity Analyzer | Instantly Analyze Your Code Complexity ",
+  "version": "1.0", 
+  "description": "Stop guessing about your algorithm's performance. Our Chrome extension automatically analyzes your code and provides real-time Big O notation complexity insights.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://*.leetcode.com/*",
+    "https://*.googleapis.com/*",
+    "https://*.firebaseio.com/*",
+    "https://extension--auth-firebase.web.app/*"
 
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+    "16": "./src/icons/expand.png",
+    "32": "./src/icons/expand.png", 
+    "48": "./src/icons/expand.png",
+    "128": "./src/icons/expand.png"
+    }
+  },
+  "icons": {
+    "16": "./src/icons/expand.png",
+    "32": "./src/icons/expand.png",
+    "48": "./src/icons/expand.png",
+    "128": "./src/icons/expand.png"
+  },
+  "content_scripts": [
+    {
+    "matches": ["https://leetcode.com/problems/*"],
+    "js": ["src/content.tsx"]
+    }
+  ],
+
+  "background": {
+    "service_worker": "src/background.ts"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+ 
+
+}

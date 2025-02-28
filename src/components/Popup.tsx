@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import AuthIframe from "../config/AuthFrame";
 import { useGlobalContext } from "../context/ContextManager";
+import SelectMode from "../constant/SelectMode";
+// import UsernamePropsPassed from "../config/UsernamePropsPassed";
 
 // Popup - component.tsx
 const Popup = () => {
-  const { fn, loader } = useGlobalContext(); // Fetch authentication function and loader state
-  const [model, setModel] = useState("Gemini 1.5 Flash");
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isDetect, setIsDetect] = useState<boolean>();
+  const{user} = useGlobalContext();
+
 
   useEffect(() => {
     chrome.storage.local.get("isDetect", (result) => {
@@ -16,10 +19,10 @@ const Popup = () => {
     });
   }, []);
 
+  // Toggle Detection apply here
   const toggleDetect = () => {
     const newDetectState = !isDetect;
     setIsDetect(newDetectState);
-
     chrome.storage.local.set({ isDetect: newDetectState });
     chrome.runtime.sendMessage({
       type: "TOGGLE_DETECT",
@@ -35,6 +38,7 @@ const Popup = () => {
     >
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-lg border-b-2 font-bold">Complexity-Analyzer</h1>
+     
         <button
           onClick={() => setIsDarkMode(!isDarkMode)}
           className="flex items-center gap-2 cursor-pointer text-sm"
@@ -53,34 +57,26 @@ const Popup = () => {
           </div>
         </button>
       </div>
-
-      <div className="mb-4">
-        <label htmlFor="model" className="block text-sm font-semibold mb-1">
-          Select Model
-        </label>
-        <select
-          id="model"
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-          className="w-full p-2 rounded bg-gray-200 text-black border border-gray-300 outline-none"
-        >
-          <option>Gemini 1.5 Flash</option>
-          <option>Chat-gpt</option>
-          <option>Claude AI</option>
-        </select>
+      <span className=" flex justify-center text-center text-zinc-400 text-sm">
+        Instantly Analyze Your Code Complexity
+        </span>
+        <br />
+      {/* put the authentication here */}
+      <span className={`text-center flex justify-center font-bold ${isDarkMode ? "text-white" : "text-black"}`} >
+        {`Hello, ${user?.name}` || "Hey kindly login in"}
+      </span>      
+      {/* Select Mode.tsx */}
+      <SelectMode/>
+      {/* AuthIframe */}
+      <AuthIframe />
+      <div className="flex items-center justify-center my-4">
+        <hr className="flex-grow border-gray-300" />
+        <span className="mx-2 text-gray-500">or</span>
+        <hr className="flex-grow border-gray-300" />
       </div>
-
-      <button
-        className="w-full py-2 mt-2 rounded bg-red-500 cursor-pointer text-white font-bold hover:opacity-90 disabled:bg-gray-400 disabled:cursor-not-allowed"
-        onClick={fn}
-        disabled={loader} // Disable button when loading
-      >
-        {loader ? "Authenticating..." : "Authenticate"}
-      </button>
-
       <button
         onClick={toggleDetect}
-        className="w-full py-2 mt-2 rounded bg-blue-500 cursor-pointer text-white font-bold hover:opacity-90"
+        className="p-2 rounded-lg w-full cursor-pointer bg-amber-400 text-black font-bold shadow-md flex items-center justify-center mt-4"
       >
         Try for Free
       </button>

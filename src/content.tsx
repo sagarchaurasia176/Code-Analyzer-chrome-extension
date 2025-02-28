@@ -1,23 +1,5 @@
-// import React from 'react'
-// import { createRoot } from 'react-dom/client'
-// import Content from './components/content'
-// import { GlobalContextFunction } from './context/ContextManager'
-// import { Toaster } from 'react-hot-toast'
-// // Create a container for your React app
-// const container = document.createElement('div')
-// container.id = 'LeetcodeContainer'
-// document.body.append(container)
-
-// // create Root of this files okay here we are creating the root of the react app
-// createRoot(container).render(
-//     <GlobalContextFunction>
-//      <Toaster/>
-//         <Content/>
-//     </GlobalContextFunction>
-// ) 
-
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import BotButton from "./components/BotButton";
 
 const Content = () => {
@@ -53,4 +35,5 @@ const Content = () => {
 // Inject component into the webpage
 const container = document.createElement("div");
 document.body.appendChild(container);
-ReactDOM.render(<Content />, container);
+const root = createRoot(container);
+root.render(<Content />);

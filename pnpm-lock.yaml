@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@firebase/app-compat':
+        specifier: ^0.2.50
+        version: 0.2.50
       '@google/generative-ai':
         specifier: ^0.21.0
         version: 0.21.0
@@ -63,6 +66,9 @@ importers:
         specifier: ^3.24.2
         version: 3.24.2
     devDependencies:
+      '@firebase/auth-types':
+        specifier: ^0.13.0
+        version: 0.13.0(@firebase/app-types@0.9.3)(@firebase/util@1.10.3)
       '@parcel/config-webextension':
         specifier: ^2.13.3
         version: 2.13.3(@parcel/core@2.13.3(@swc/helpers@0.5.15))(@swc/helpers@0.5.15)(postcss@8.5.3)(typescript@5.7.3)
