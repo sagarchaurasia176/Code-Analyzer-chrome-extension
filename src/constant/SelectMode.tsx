@@ -16,7 +16,7 @@ const [model, setModel] = useState("Gemini 1.5 Flash");
           className="w-full p-2 cursor-pointer rounded bg-gray-200 text-black border border-gray-300 outline-none"
         >
           <option>Gemini 1.5 Flash</option>
-          <option>Claude AI</option>
+          <option>Claude 3.5 Sonnet</option>
         </select>
         <button
             type="submit"
