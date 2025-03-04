@@ -1,39 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import BotButton from "./components/BotButton";
+import {
+  GlobalContextFunction,
+  useGlobalContext,
+} from "./context/ContextManager";
 
 const Content = () => {
-  const [isDetect, setIsDetect] = useState(false);
+  const { isGenerated, setIsGenerated } = useGlobalContext();
 
-  // Listen for Chrome Storage changes
   useEffect(() => {
-    chrome.storage.local.get("isDetect", (result) => {
-      if (result.isDetect !== undefined) {
-        setIsDetect(result.isDetect);
-      }
-    });
-
-    chrome.storage.onChanged.addListener((changes) => {
+    const handleStorageChange = (changes: { [key: string]: chrome.storage.StorageChange }) => {
       if (changes.isDetect) {
-        setIsDetect(changes.isDetect.newValue);
+        setIsGenerated(changes.isDetect.newValue);
       }
+    };
+
+    chrome.storage.local.get("isDetect", (result) => {
+      setIsGenerated(result.isDetect ?? false);
     });
 
-    // Listen for messages from popup
-    chrome.runtime.onMessage.addListener((message) => {
-      if (message.type === "TOGGLE_DETECT") {
-        setIsDetect(message.payload);
-      }
-    });
+    chrome.storage.onChanged.addListener(handleStorageChange);
+
+    return () => {
+      chrome.storage.onChanged.removeListener(handleStorageChange);
+    };
   }, []);
 
-  return isDetect ? (
-      <BotButton />
-  ) : null;
+  return isGenerated ? <BotButton /> : null;
 };
 
-// Inject component into the webpage
-const container = document.createElement("div");
-document.body.appendChild(container);
+// Inject Chrome Extension into the page
+const CONTAINER_ID = "chrome-extension-root";
+let container = document.getElementById(CONTAINER_ID);
+if (!container) {
+  container = document.createElement("div");
+  container.id = CONTAINER_ID;
+  document.body.appendChild(container);
+}
+
 const root = createRoot(container);
-root.render(<Content />);
+root.render(
+  <GlobalContextFunction>
+    <Content />
+  </GlobalContextFunction>
+);

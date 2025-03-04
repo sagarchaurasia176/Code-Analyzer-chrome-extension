@@ -1,34 +1,10 @@
 import React, { useEffect, useState } from "react";
-import AuthIframe from "../config/AuthFrame";
-import { useGlobalContext } from "../context/ContextManager";
 import SelectMode from "../constant/SelectMode";
-// import UsernamePropsPassed from "../config/UsernamePropsPassed";
+import { GlobalContextFunction, useGlobalContext } from "../context/ContextManager";
 
 // Popup - component.tsx
 const Popup = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [isDetect, setIsDetect] = useState<boolean>();
-  const{user} = useGlobalContext();
-
-
-  useEffect(() => {
-    chrome.storage.local.get("isDetect", (result) => {
-      if (result.isDetect !== undefined) {
-        setIsDetect(result.isDetect);
-      }
-    });
-  }, []);
-
-  // Toggle Detection apply here
-  const toggleDetect = () => {
-    const newDetectState = !isDetect;
-    setIsDetect(newDetectState);
-    chrome.storage.local.set({ isDetect: newDetectState });
-    chrome.runtime.sendMessage({
-      type: "TOGGLE_DETECT",
-      payload: newDetectState,
-    });
-  };
 
   return (
     <div
@@ -61,25 +37,7 @@ const Popup = () => {
         Instantly Analyze Your Code Complexity
         </span>
         <br />
-      {/* put the authentication here */}
-      <span className={`text-center flex justify-center font-bold ${isDarkMode ? "text-white" : "text-black"}`} >
-        {`Hello, ${user?.name}` || "Hey kindly login in"}
-      </span>      
-      {/* Select Mode.tsx */}
       <SelectMode/>
-      {/* AuthIframe */}
-      <AuthIframe />
-      <div className="flex items-center justify-center my-4">
-        <hr className="flex-grow border-gray-300" />
-        <span className="mx-2 text-gray-500">or</span>
-        <hr className="flex-grow border-gray-300" />
-      </div>
-      <button
-        onClick={toggleDetect}
-        className="p-2 rounded-lg w-full cursor-pointer bg-amber-400 text-black font-bold shadow-md flex items-center justify-center mt-4"
-      >
-        Try for Free
-      </button>
     </div>
   );
 };

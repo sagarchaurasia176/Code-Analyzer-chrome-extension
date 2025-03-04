@@ -1,32 +1,35 @@
 import React, { useState } from 'react'
+import UserEmail from './UserEmail';
 
+// user Option Model - for passing the props
+interface UserEmailProps {
+  models: string,
+  setModel: React.Dispatch<React.SetStateAction<string>>;
+}
 const SelectMode = () => {
-const [model, setModel] = useState("Gemini 1.5 Flash");
+  const [models, setModel] = useState<string>("Gemini 1.5 Flash");
+
   return (
-    <div>  
-     {/* Now select the model and used it */}
+    <div>
+      {/* Now select the model and used it */}
       <div className="mt-4 cursor-pointer">
-        <label htmlFor="model" className=" cursor-pointer block text-sm font-semibold mb-1">
+        <label htmlFor="model" className=" cursor-pointer block  text-gray-700 text-sm font-semibold mb-1">
           Select Model
         </label>
         <select
           id="model"
-          value={model}
+          value={models}
           onChange={(e) => setModel(e.target.value)}
-          className="w-full p-2 cursor-pointer rounded bg-gray-200 text-black border border-gray-300 outline-none"
+          className="w-full p-2 cursor-pointer rounded bg-slate-900 text-white border border-gray-300 outline-none"
         >
-          <option>Gemini 1.5 Flash</option>
-          <option>Claude 3.5 Sonnet</option>
+          <option className="bg-white p-2 text-black">Gemini 1.5 Flash</option>
+          <option className="bg-white p-2 text-black">Claude 3.5 Sonnet</option>
         </select>
-        <button
-            type="submit"
-            className="mt-4 p-2 w-full bg-black text-white rounded cursor-pointer"
-        >
-            Submit
-        </button>
+        <br /><br />
+        {/* userEmail components */}
+        <UserEmail models={models} setModel={setModel} />      
       </div>
-      <br />
-      
+
     </div>
   )
 }

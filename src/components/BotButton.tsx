@@ -1,51 +1,77 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from "react";
 import { VscRobot } from "react-icons/vsc";
-import DialogueBox from './DialogueBox';
-
+import DialogueBox from "./DialogueBox";
+import { useGlobalContext } from "../context/ContextManager";
 // Bot Button Component
 const BotButton = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  // GeminApi prompt logics 
-  const Fn = () => {
-    setIsOpen(!isOpen);
-  }
-// Then return the button component
+  const [isCodePasted, setIsCodePasted] = useState(false);
+  const [userCode, setUserCode] = useState("");
+  const { isGenerated, setIsGenerated} = useGlobalContext();
+  const[isOpen , setIsOpen]  = useState<boolean>(false);
+
+  // Toglge bot 
+  const toggleBot = () => {
+    if (isCodePasted) {
+      setIsOpen(!isOpen);
+    }
+  };
+
+  // Handle user pasting the code (only once)
+  const handlePaste = (event: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    if (!isCodePasted) {
+      const pastedText = event.clipboardData.getData("text");
+      setUserCode(pastedText);
+      setIsCodePasted(true);
+    }
+  };
+
   return (
     <div>
-      {/* Button with bot icon */}
+ {!isCodePasted && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black text-black bg-opacity-50 z-50">
+
+    {/* Pending task  */}
+    <textarea
+      placeholder="Paste your code here..."
+      onPaste={handlePaste}
+      className="w-[200px] h-[150vh] p-3 border-2 border-black rounded-lg text-lg text-black bg-white outline-none shadow-lg"
+    />
+  </div>
+)}
+
+
+        {/* Bot Button (only enabled after pasting) */}
       <button
-        onClick={() => Fn()}
+        onClick={toggleBot}
         style={{
           position: "fixed",
           right: "20px",
-          top: "80%",
+          bottom: "20px",
+          marginTop:"254px",
           backgroundColor: isOpen ? "white" : "black",
           color: isOpen ? "black" : "white",
           border: isOpen ? "1px solid black" : "none",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          padding: "10px",
-          borderRadius: "12px",
+          padding: "12px",
+          borderRadius: "50%",
           transition: "all 0.3s ease",
-          cursor: "pointer",
-          animation: isOpen ? "bounce 0.5s" : "none",
-          transform: isOpen ? "scale(1.1)" : "scale(1)"
         }}
       >
-        <VscRobot style={{ 
-          color: isOpen ? "black" : "white", 
-          fontSize: "30px",
-          transform: isOpen ? "rotate(360deg)" : "rotate(0deg)",
-          transition: "all 0.3s ease"
-        }} />
+        <VscRobot
+          style={{
+            color: isOpen ? "black" : "white",
+            fontSize: "30px",
+            transform: isOpen ? "rotate(360deg)" : "rotate(0deg)",
+            transition: "all 0.3s ease",
+          }}
+        />
       </button>
-      
-    {/* Popup Dialog */}
-      {isOpen && (
-        // Dialogue Box Component
-        <DialogueBox isOpen={isOpen} setIsOpen={setIsOpen}/>
-      )}
+
+      {/* Popup Dialog (if needed) */}
+      {isGenerated && <DialogueBox isOpen={isOpen} setIsOpen={setIsOpen} />}
+
       <style>
         {`
           @keyframes bounce {
@@ -62,24 +88,10 @@ const BotButton = () => {
               transform: translateY(0);
             }
           }
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-          @keyframes slideUp {
-            from { 
-              opacity: 0;
-              transform: translateY(10px);
-            }
-            to { 
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
         `}
       </style>
     </div>
-  )
-}
+  );
+};
 
-export default BotButton
+export default BotButton;

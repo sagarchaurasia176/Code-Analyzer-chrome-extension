@@ -11,9 +11,7 @@
   ],
   "host_permissions": [
     "https://*.leetcode.com/*",
-    "https://*.googleapis.com/*",
-    "https://*.firebaseio.com/*",
-    "https://extension--auth-firebase.web.app/*"
+    "https://*.googleapis.com/*"
 
   ],
   "action": {
