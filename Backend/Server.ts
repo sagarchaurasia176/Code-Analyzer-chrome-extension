@@ -1,16 +1,34 @@
-import express ,{Request , Response} from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
-
-
+import cors from 'cors';
+import router from './routes/UserRoutes';
+import { MongoDbConnection } from './config/MongoDbConnection';
 dotenv.config();
 
-// Express code apply it !
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
+app.use(express.json()); //server rendering - middleware
+app.use(
+  cors({
+    credentials: true,
+    origin: "*",
+  })
+);
 
-app.get('/', (req:Request, res:Response)=>{
-    res.send("Backend worked fine")
-})
+// db import 
+app.use('/user/auth', router);
+//  routes 
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 
-
+const start = async()=>{
+  await MongoDbConnection(process.env.MONGODB_URI!);
+  console.log("db connected")
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+} 
+start();

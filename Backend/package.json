@@ -10,14 +10,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "firebase-admin": "^13.1.0",
     "mongodb": "^6.14.0",
+    "mongoose": "^8.12.0",
     "node": "^23.9.0",
     "nodemon": "^3.1.9",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^22.13.8",
     "express": "^4.21.2",
     "ts-node": "^10.9.2",
