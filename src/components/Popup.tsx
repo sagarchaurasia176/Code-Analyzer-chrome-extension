@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import SelectMode from "../constant/SelectMode";
-import { GlobalContextFunction, useGlobalContext } from "../context/ContextManager";
+import React, {useState } from "react";
+import GoogleAuth from "../auth/GoogleAuth";
 
 // Popup - component.tsx
 const Popup = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
-
   return (
     <div
       className={`${
@@ -37,7 +35,19 @@ const Popup = () => {
         Instantly Analyze Your Code Complexity
         </span>
         <br />
-      <SelectMode/>
+        <div className="text-center flex flex-col p-3">
+          <h2 className="text-md font-bold text-white mb-2">Authenticate with Google to use</h2>
+          <h3 className="text-sm  text-green-500 font-semibold mb-4">Complexity Analyzer</h3>
+          <p className="text-xs text-gray-400 mb-4">
+            Your data is secure and will not be shared with third parties
+          </p>
+         
+         
+
+        {/* authentication applied it here */}
+        <GoogleAuth/>
+        </div>
+
     </div>
   );
 };

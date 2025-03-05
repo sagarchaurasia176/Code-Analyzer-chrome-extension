@@ -4,45 +4,13 @@ import DialogueBox from "./DialogueBox";
 import { useGlobalContext } from "../context/ContextManager";
 // Bot Button Component
 const BotButton = () => {
-  const [isCodePasted, setIsCodePasted] = useState(false);
-  const [userCode, setUserCode] = useState("");
-  const { isGenerated, setIsGenerated} = useGlobalContext();
   const[isOpen , setIsOpen]  = useState<boolean>(false);
-
-  // Toglge bot 
-  const toggleBot = () => {
-    if (isCodePasted) {
-      setIsOpen(!isOpen);
-    }
-  };
-
-  // Handle user pasting the code (only once)
-  const handlePaste = (event: React.ClipboardEvent<HTMLTextAreaElement>) => {
-    if (!isCodePasted) {
-      const pastedText = event.clipboardData.getData("text");
-      setUserCode(pastedText);
-      setIsCodePasted(true);
-    }
-  };
 
   return (
     <div>
- {!isCodePasted && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black text-black bg-opacity-50 z-50">
-
-    {/* Pending task  */}
-    <textarea
-      placeholder="Paste your code here..."
-      onPaste={handlePaste}
-      className="w-[200px] h-[150vh] p-3 border-2 border-black rounded-lg text-lg text-black bg-white outline-none shadow-lg"
-    />
-  </div>
-)}
-
-
         {/* Bot Button (only enabled after pasting) */}
       <button
-        onClick={toggleBot}
+
         style={{
           position: "fixed",
           right: "20px",
@@ -70,7 +38,7 @@ const BotButton = () => {
       </button>
 
       {/* Popup Dialog (if needed) */}
-      {isGenerated && <DialogueBox isOpen={isOpen} setIsOpen={setIsOpen} />}
+      <DialogueBox isOpen={isOpen} setIsOpen={setIsOpen} />
 
       <style>
         {`
