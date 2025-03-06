@@ -35,6 +35,10 @@
     "js": ["src/content.tsx"]
     }
   ],
+  "oauth2": {
+    "client_id": "606210864320-6tooichvh9jc208e87onp3i2g2uefbkk.apps.googleusercontent.com",
+    "scopes": ["openid", "email", "profile"]
+  },
 
   "background": {
     "service_worker": "src/background.ts"
