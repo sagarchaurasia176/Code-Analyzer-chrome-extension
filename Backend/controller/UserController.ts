@@ -9,16 +9,16 @@ export async function UserController(
   try {
     const { idToken } = req.body;
     if (!idToken) {
-      res.status(400).json({ message: "Token is required" });
+       res.status(400).json({ message: "Token is required" });
     }
     const decodeToken = await admin.auth().verifyIdToken(idToken);
     console.log(decodeToken);
-    const { uid, email } = decodeToken;
+    const { uid, email} = decodeToken;
     // stored the data into the db
     // 🔹 Store user in MongoDB
     let user = await GoogleAuthSchema.findOne({ uid });
     if (!user) {
-      user = new GoogleAuthSchema({ uid, email });
+      user = new GoogleAuthSchema({ uid, email});
       await user.save();
     }
     const options = {
@@ -31,16 +31,27 @@ export async function UserController(
         message: "User authenticated successfully and cookies stored",
         data: user,
   })
-  } catch (er) {
-    res
-      .status(401)
-      .json({ success: false, message: "Invalid token", error: er });
+}
+  catch (error: any) {
+    console.error("Token Verification Error:", error.message);
+    let message = "Invalid token";
+
+    if (error.code === "auth/id-token-expired") {
+      message = "Token expired. Please log in again.";
+    } else if (error.code === "auth/invalid-id-token") {
+      message = "Invalid ID token.";
+    }
+
+    res.status(401).json({ success: false, message, error: error.message });
   }
 }
 
 
+// LogOut-controoler
 export const LogoutController = (req: Request, res: Response) => {
   try {
+
+
     res.clearCookie("analyzer");
     res.json({ message: "Logged out successfully" });
 
@@ -55,7 +66,7 @@ export const LogoutController = (req: Request, res: Response) => {
 //middleware for high security purpose
 export const AuthMiddleware = (req: Request, res: Response, next: Function):void=> {
   try {
-    const token = req.cookies.analyxer;
+    const token = req.cookies.analyzer;
     if (!token) {
     res.status(401).json({ message: "Unauthorized" });
     }

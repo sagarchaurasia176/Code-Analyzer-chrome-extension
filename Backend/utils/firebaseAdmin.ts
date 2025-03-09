@@ -9,7 +9,6 @@ if (!serviceAccountEnv) {
   throw new Error("FIREBASE_SERVICE_ACCOUNT environment variable is not defined");
 }
 const serviceAccount = JSON.parse(serviceAccountEnv);
-console.log(serviceAccount);
 
 if (!admin.apps.length) {
   admin.initializeApp({

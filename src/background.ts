@@ -11,7 +11,6 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   return true;
 });
 
-
 // const CLIENT_ID = "606210864320-6tooichvh9jc208e87onp3i2g2uefbkk.apps.googleusercontent.com";
 // const REDIRECT_URL = chrome.identity.getRedirectURL();
 // // const AUTH_URL = `https://accounts.google.com/o/oauth2/auth?client_id=${CLIENT_ID}&response_type=id_token&redirect_uri=${REDIRECT_URL}&scope=openid%20email%20profile&nonce=${Math.random()}`;

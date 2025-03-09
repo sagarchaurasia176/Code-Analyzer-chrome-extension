@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import GoogleAuth from "../auth/GoogleAuth";
+import GoogleAuth from '../auth/AutheFrame';
+import AutheFrame from "../auth/AutheFrame";
 
 // Popup - component.tsx
 const Popup = () => {
@@ -35,18 +36,7 @@ const Popup = () => {
         Instantly Analyze Your Code Complexity
       </span>
       <br />
-      <div className="text-center flex flex-col p-3">
-        <h2 className="text-md font-bold text-white mb-2">
-          Authenticate with Google to use
-        </h2>
-        <h3 className="text-sm  text-green-500 font-semibold mb-4">
-          Complexity Analyzer
-        </h3>
-        <p className="text-xs text-gray-400 mb-4">
-          Your data is secure and will not be shared with third parties
-        </p>
-        <GoogleAuth />
-      </div>
+      <AutheFrame/>    
     </div>
   );
 };

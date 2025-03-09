@@ -1,5 +1,4 @@
-import { createContext, useState, ReactNode, useContext, useEffect } from "react";
-import toast from "react-hot-toast";
+import React, { createContext, useState, ReactNode, useContext } from "react";
 
 // Create Context - provider
 export const ContextAPI = createContext<
@@ -10,6 +9,8 @@ export const ContextAPI = createContext<
       error: string | null;
       setError: React.Dispatch<React.SetStateAction<string | null>>;
       setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+      user:  any | null;
+      setUser: React.Dispatch<React.SetStateAction<any | null>>;
     }
   | undefined
 >(undefined);
@@ -23,6 +24,7 @@ export const GlobalContextFunction = ({
   const [isDetect, setDetect] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<{ name: string } | null>(null);
 
   return (
     <ContextAPI.Provider
@@ -33,6 +35,8 @@ export const GlobalContextFunction = ({
         setLoading,
         error,
         setError,
+        user,
+        setUser,
       }}
     >
       {children}

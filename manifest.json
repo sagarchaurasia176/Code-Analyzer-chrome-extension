@@ -11,8 +11,10 @@
   ],
   "host_permissions": [
     "https://*.leetcode.com/*",
-    "https://*.googleapis.com/*"
-
+    "https://*.googleapis.com/*",
+    "https://*.firebaseapp.com/*",
+    "https://code-analyzer-8dfab.web.app"
+    
   ],
   "action": {
     "default_popup": "index.html",
@@ -39,12 +41,12 @@
     "client_id": "606210864320-6tooichvh9jc208e87onp3i2g2uefbkk.apps.googleusercontent.com",
     "scopes": ["openid", "email", "profile"]
   },
-
+  
   "background": {
     "service_worker": "src/background.ts"
   },
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
+    "extension_pages": "script-src 'self' https://www.gstatic.com/ https://www.googleapis.com/; object-src 'self'"
   }
  
 
