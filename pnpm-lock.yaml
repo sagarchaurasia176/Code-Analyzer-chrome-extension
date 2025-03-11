@@ -11,6 +11,9 @@ importers:
       '@firebase/app-compat':
         specifier: ^0.2.50
         version: 0.2.50
+      '@firebase/auth':
+        specifier: ^1.9.1
+        version: 1.9.1(@firebase/app@0.11.1)
       '@google/generative-ai':
         specifier: ^0.21.0
         version: 0.21.0
@@ -196,8 +199,22 @@ packages:
       '@react-native-async-storage/async-storage':
         optional: true
 
+  '@firebase/auth@1.9.1':
+    resolution: {integrity: sha512-9KKo5SNVkyJzftsW+daS+PGDbeJ+MFJWXQFHDqqPPH3acWHtiNnGHH5HGpIJErEELrsm9xMPie5zfZ0XpGU8+w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@firebase/app': 0.x
+      '@react-native-async-storage/async-storage': ^1.18.1
+    peerDependenciesMeta:
+      '@react-native-async-storage/async-storage':
+        optional: true
+
   '@firebase/component@0.6.12':
     resolution: {integrity: sha512-YnxqjtohLbnb7raXt2YuA44cC1wA9GiehM/cmxrsoxKlFxBLy2V0OkRSj9gpngAE0UoJ421Wlav9ycO7lTPAUw==}
+    engines: {node: '>=18.0.0'}
+
+  '@firebase/component@0.6.13':
+    resolution: {integrity: sha512-I/Eg1NpAtZ8AAfq8mpdfXnuUpcLxIDdCDtTzWSh+FXnp/9eCKJ3SNbOCKrUCyhLzNa2SiPJYruei0sxVjaOTeg==}
     engines: {node: '>=18.0.0'}
 
   '@firebase/data-connect@0.3.0':
@@ -327,6 +344,10 @@ packages:
 
   '@firebase/util@1.10.3':
     resolution: {integrity: sha512-wfoF5LTy0m2ufUapV0ZnpcGQvuavTbJ5Qr1Ze9OJGL70cSMvhDyjS4w2121XdA3lGZSTOsDOyGhpoDtYwck85A==}
+    engines: {node: '>=18.0.0'}
+
+  '@firebase/util@1.11.0':
+    resolution: {integrity: sha512-PzSrhIr++KI6y4P6C/IdgBNMkEx0Ex6554/cYd0Hm+ovyFSJtJXqb/3OSIdnBoa2cpwZT1/GW56EmRc5qEc5fQ==}
     engines: {node: '>=18.0.0'}
 
   '@firebase/vertexai@1.0.4':
@@ -1874,9 +1895,22 @@ snapshots:
       '@firebase/util': 1.10.3
       tslib: 2.8.1
 
+  '@firebase/auth@1.9.1(@firebase/app@0.11.1)':
+    dependencies:
+      '@firebase/app': 0.11.1
+      '@firebase/component': 0.6.13
+      '@firebase/logger': 0.4.4
+      '@firebase/util': 1.11.0
+      tslib: 2.8.1
+
   '@firebase/component@0.6.12':
     dependencies:
       '@firebase/util': 1.10.3
+      tslib: 2.8.1
+
+  '@firebase/component@0.6.13':
+    dependencies:
+      '@firebase/util': 1.11.0
       tslib: 2.8.1
 
   '@firebase/data-connect@0.3.0(@firebase/app@0.11.1)':
@@ -2085,6 +2119,10 @@ snapshots:
       tslib: 2.8.1
 
   '@firebase/util@1.10.3':
+    dependencies:
+      tslib: 2.8.1
+
+  '@firebase/util@1.11.0':
     dependencies:
       tslib: 2.8.1
 

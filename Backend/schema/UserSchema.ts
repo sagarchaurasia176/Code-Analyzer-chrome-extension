@@ -11,6 +11,9 @@ const userDetails = new Schema({
         required: true,
         unique: true
     },
+    name:{
+        type: String,
+    }
 
 })
 export  const GoogleAuthSchema = model('User', userDetails);

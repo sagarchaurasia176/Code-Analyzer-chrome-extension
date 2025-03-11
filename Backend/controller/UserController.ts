@@ -1,79 +1,96 @@
-import { Request, Response } from "express";
-import admin from "../utils/firebaseAdmin";
-import { GoogleAuthSchema } from "../schema/User.schema";
+import { Request, Response, NextFunction } from "express";
+import { GoogleAuthSchema } from "../schema/UserSchema";
+import { error } from "node:console";
+import { verifyFirebaseToken } from "../utils/firebaseAdmin";
 
-export async function UserController(
-  req: Request,
-  res: Response
-): Promise<void> {
+export async function UserController(req: Request, res: Response): Promise<void> {
   try {
-    const { idToken } = req.body;
+    const tokenMatch = req.headers.authorization?.match(/^Bearer\s(.+)$/);
+    const idToken = tokenMatch ? tokenMatch[1] : null;
+
     if (!idToken) {
-       res.status(400).json({ message: "Token is required" });
+      res.status(401).json({ success: false, message: "No token provided" });
+      return;
     }
-    const decodeToken = await admin.auth().verifyIdToken(idToken);
-    console.log(decodeToken);
-    const { uid, email} = decodeToken;
-    // stored the data into the db
-    // 🔹 Store user in MongoDB
+
+    // Verify token and get user data
+    const { uid, email, name } = await verifyFirebaseToken(idToken);
+
     let user = await GoogleAuthSchema.findOne({ uid });
+
     if (!user) {
-      user = new GoogleAuthSchema({ uid, email});
-      await user.save();
-    }
-    const options = {
-      expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // Corrected: Adds 3 full days
-      httpOnly: true, // Prevents JavaScript access for security
-      // secure: true, // Ensures cookies are sent over HTTPS
-    };
-    
-    res.cookie("analyzer", idToken, options).status(200).json({
-        message: "User authenticated successfully and cookies stored",
-        data: user,
-  })
-}
-  catch (error: any) {
-    console.error("Token Verification Error:", error.message);
-    let message = "Invalid token";
+      user = await GoogleAuthSchema.create({ uid, email, name });
+    } 
 
-    if (error.code === "auth/id-token-expired") {
-      message = "Token expired. Please log in again.";
-    } else if (error.code === "auth/invalid-id-token") {
-      message = "Invalid ID token.";
-    }
+    // // Set the auth cookie
+    // res.cookie("analyzer", idToken, {
+    //   httpOnly: true,
+    //   sameSite: "none",
+    //   maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    // });
 
-    res.status(401).json({ success: false, message, error: error.message });
+    // Return user data
+    res.status(200).json({
+      success: true,
+      message: "Login successful",
+      user: {
+        uid: user.uid,
+        email: user.email,
+        name: user.name,
+      },
+    });
+  } catch (error) {
+    console.error("Authentication error:", error);
+    res.status(401).json({
+      success: false,
+      message: "Authentication failed",
+    });
   }
 }
 
 
-// LogOut-controoler
-export const LogoutController = (req: Request, res: Response) => {
+
+export const LogoutController = (req: Request, res: Response): void => {
   try {
-
-
     res.clearCookie("analyzer");
-    res.json({ message: "Logged out successfully" });
-
-  } catch (er) {
-    res
-      .status(403)
-      .json({ success: false, message: "cookies not removed", error: er });
+    res.status(200).json({
+      success: true,
+      message: "Logged out successfully",
+    });
+  } catch {
+    console.error("Logout error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to logout",
+    });
   }
-}
+};
 
-
-//middleware for high security purpose
-export const AuthMiddleware = (req: Request, res: Response, next: Function):void=> {
+export const AuthMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   try {
     const token = req.cookies.analyzer;
     if (!token) {
-    res.status(401).json({ message: "Unauthorized" });
+      res.status(401).json({
+        success: false,
+        message: "Authentication required",
+      });
+      return;
     }
+
+    // You might want to verify the token here with Firebase admin
+    // const decodedToken = await admin.auth().verifyIdToken(token);
+    // req.user = decodedToken;
+
     next();
-  }catch(er){
-    res.json({
-      message:"auth middleware not work well"
-    })
+  } catch {
+    console.error("Auth middleware error:", error);
+    res.status(401).json({
+      success: false,
+      message: "Invalid authentication",
+    });
   }
-}
+};

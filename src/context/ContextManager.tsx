@@ -9,8 +9,8 @@ export const ContextAPI = createContext<
       error: string | null;
       setError: React.Dispatch<React.SetStateAction<string | null>>;
       setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-      user:  any | null;
-      setUser: React.Dispatch<React.SetStateAction<any | null>>;
+      user:  string | any;
+      setUser: React.Dispatch<React.SetStateAction<string | any>>;
     }
   | undefined
 >(undefined);

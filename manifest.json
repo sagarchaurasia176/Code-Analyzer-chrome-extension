@@ -13,7 +13,12 @@
     "https://*.leetcode.com/*",
     "https://*.googleapis.com/*",
     "https://*.firebaseapp.com/*",
-    "https://code-analyzer-8dfab.web.app"
+    "https://code-analyzer-8dfab.web.app/*",
+    "https://chrome-firebase.vercel.app/*",
+"https://apis.google.com",
+"https://www.gstatic.com",
+"https://www.googleapis.com",
+"https://securetoken.googleapis.com"
     
   ],
   "action": {

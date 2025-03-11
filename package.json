@@ -4,6 +4,7 @@
   "description": "Chrome extension for analyzing LeetCode problem complexity",
   "dependencies": {
     "@firebase/app-compat": "^0.2.50",
+    "@firebase/auth": "^1.9.1",
     "@google/generative-ai": "^0.21.0",
     "@react-oauth/google": "^0.12.1",
     "@tailwindcss/postcss": "^4.0.8",
