@@ -11,6 +11,8 @@ export const ContextAPI = createContext<
       setLoading: React.Dispatch<React.SetStateAction<boolean>>;
       user:  string | any;
       setUser: React.Dispatch<React.SetStateAction<string | any>>;
+      userResponse:string | any,
+      setUserResponse:React.Dispatch<React.SetStateAction<string | any>>
     }
   | undefined
 >(undefined);
@@ -25,6 +27,9 @@ export const GlobalContextFunction = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<{ name: string } | null>(null);
+  const [userResponse, setUserResponse] = useState<{ name: string } | null>(
+    JSON.parse(localStorage.getItem("analyzer") || "null")
+  );
 
   return (
     <ContextAPI.Provider
@@ -37,6 +42,8 @@ export const GlobalContextFunction = ({
         setError,
         user,
         setUser,
+        userResponse , 
+        setUserResponse
       }}
     >
       {children}

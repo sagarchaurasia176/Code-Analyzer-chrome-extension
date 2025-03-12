@@ -12,7 +12,7 @@ const Popup = () => {
       } w-96 p-6 rounded-lg shadow-lg border transition-all`}
     >
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-lg border-b-2 font-bold">Complexity-Analyzer</h1>
+        <h1 className="text-lg border-b-2 font-bold">Code-Analyzer</h1>
 
         <button
           onClick={() => setIsDarkMode(!isDarkMode)}

@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import admin from "firebase-admin";
 dotenv.config();
 
-// Load service account credentials from environment variables
 const serviceAccountEnv = process.env.FIREBASE_SERVICE_ACCOUNT!;
 if (!serviceAccountEnv) {
   throw new Error("FIREBASE_SERVICE_ACCOUNT environment variable is not defined");
@@ -31,7 +30,7 @@ export async function verifyFirebaseToken(idToken: string) {
 
   try {
     // Verify token using Firebase Admin SDK
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const decodedToken = await admin.auth().verifyIdToken(idToken); // it fetch from the firebase
     if (!decodedToken.email) {
       throw new Error("❌ No email associated with this token.");
     }

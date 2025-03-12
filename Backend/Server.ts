@@ -17,7 +17,10 @@ app.use(bodyParser.json());
 
 
 app.use(cors({
-  origin: "*", // Add your frontend URLs
+  origin: [
+    "chrome-extension://fmjgimepnoffjjongiedkgbanfnhobkk",
+    "https://code-analyzer-login-auth.vercel.app",
+    "*"], 
   credentials: true, // Important for cookies
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));

@@ -1,7 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import { GoogleAuthSchema } from "../schema/UserSchema";
-import { error } from "node:console";
 import { verifyFirebaseToken } from "../utils/firebaseAdmin";
+import { attachCookies } from "../utils/attachCookies";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 export async function UserController(req: Request, res: Response): Promise<void> {
   try {
@@ -14,21 +17,22 @@ export async function UserController(req: Request, res: Response): Promise<void>
     }
 
     // Verify token and get user data
-    const { uid, email, name } = await verifyFirebaseToken(idToken);
+    const decodedToken = await verifyFirebaseToken(idToken);
 
-    let user = await GoogleAuthSchema.findOne({ uid });
+    const { uid, email, name } = decodedToken;
 
+    // Create a JWT token
+    const jwtToken = jwt.sign(
+      { uid, email },
+      process.env.JWT_SECRET as string,
+      { expiresIn: "7d" }
+    );
+    let user = await GoogleAuthSchema.findOne({ email });
     if (!user) {
       user = await GoogleAuthSchema.create({ uid, email, name });
-    } 
-
-    // // Set the auth cookie
-    // res.cookie("analyzer", idToken, {
-    //   httpOnly: true,
-    //   sameSite: "none",
-    //   maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    // });
-
+    }
+    // Set the JWT token in cookies
+    attachCookies(res, jwtToken);
     // Return user data
     res.status(200).json({
       success: true,
@@ -38,6 +42,7 @@ export async function UserController(req: Request, res: Response): Promise<void>
         email: user.email,
         name: user.name,
       },
+      jwt:jwtToken
     });
   } catch (error) {
     console.error("Authentication error:", error);
@@ -48,16 +53,18 @@ export async function UserController(req: Request, res: Response): Promise<void>
   }
 }
 
-
-
 export const LogoutController = (req: Request, res: Response): void => {
   try {
-    res.clearCookie("analyzer");
+    res.clearCookie("analyzer", {
+      httpOnly: false,
+      secure: false,
+      sameSite: "none",
+    });
     res.status(200).json({
       success: true,
       message: "Logged out successfully",
     });
-  } catch {
+  } catch (error) {
     console.error("Logout error:", error);
     res.status(500).json({
       success: false,
@@ -65,32 +72,25 @@ export const LogoutController = (req: Request, res: Response): void => {
     });
   }
 };
-
 export const AuthMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction
 ): void => {
   try {
-    const token = req.cookies.analyzer;
+    const token = req.cookies?.analyzer;
     if (!token) {
-      res.status(401).json({
-        success: false,
-        message: "Authentication required",
-      });
+      res.status(401).json({ success: false, message: "Authentication required for middleare controller" });
       return;
     }
 
-    // You might want to verify the token here with Firebase admin
-    // const decodedToken = await admin.auth().verifyIdToken(token);
-    // req.user = decodedToken;
+    // Verify JWT token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
+    (req as any).user = decoded; // Attach user data to request
 
     next();
-  } catch {
+  } catch (error) {
     console.error("Auth middleware error:", error);
-    res.status(401).json({
-      success: false,
-      message: "Invalid authentication",
-    });
+    res.status(401).json({ success: false, message: "Invalid authentication from middleware" });
   }
 };

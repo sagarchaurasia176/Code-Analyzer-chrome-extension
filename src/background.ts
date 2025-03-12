@@ -9,7 +9,15 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     sendResponse({ status: 'received' });
   }
   return true;
-});
+}); 
+// Simulate user login
+chrome.storage.local.set({ analyzer: true });
+
+// Simulate user logout
+chrome.storage.local.remove("analyzer");
+
+
+
 
 // const CLIENT_ID = "606210864320-6tooichvh9jc208e87onp3i2g2uefbkk.apps.googleusercontent.com";
 // const REDIRECT_URL = chrome.identity.getRedirectURL();

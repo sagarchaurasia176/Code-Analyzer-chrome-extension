@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Complexity Analyzer | Instantly Analyze Your Code Complexity ",
+  "name": "Code-Analyzer | Instantly Analyze Your Code Complexity ",
   "version": "1.0", 
   "description": "Stop guessing about your algorithm's performance. Our Chrome extension automatically analyzes your code and provides real-time Big O notation complexity insights.",
   "permissions": [
