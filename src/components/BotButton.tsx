@@ -1,43 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { VscRobot } from "react-icons/vsc";
 import DialogueBox from "./DialogueBox";
-import { useGlobalContext } from "../context/ContextManager";
-// Bot Button Component
+
 const BotButton = () => {
-  const[isOpen , setIsOpen]  = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
+
+  const BotHandler = () => setIsOpen(!isOpen);
+
+  // Handle screen resize for responsiveness
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div>
-        {/* Bot Button (only enabled after pasting) */}
-      <button
-
-        style={{
-          position: "fixed",
-          right: "20px",
-          bottom: "20px",
-          marginTop:"254px",
-          backgroundColor: isOpen ? "white" : "black",
-          color: isOpen ? "black" : "white",
-          border: isOpen ? "1px solid black" : "none",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "12px",
-          borderRadius: "50%",
-          transition: "all 0.3s ease",
-        }}
-      >
-        <VscRobot
+      {/* Bot Button */}
+        <button
+          onClick={BotHandler}
           style={{
-            color: isOpen ? "black" : "white",
-            fontSize: "30px",
-            transform: isOpen ? "rotate(360deg)" : "rotate(0deg)",
-            transition: "all 0.3s ease",
+            position: "fixed",
+            bottom: "80px",
+            right: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: isMobile ? "50px" : "60px",
+            height: isMobile ? "50px" : "60px",
+            backgroundColor: isOpen ? "#fff" : "#000",
+            color: isOpen ? "#000" : "#fff",
+            border: isOpen ? "1px solid #000" : "none",
+            borderRadius: "50%",
+            boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+            cursor: "pointer",
+            zIndex: 999,
+            transition: "all 0.4s ease",
+            animation: isOpen ? "bounce 0.5s" : "none",
           }}
-        />
-      </button>
+          aria-label={isOpen ? "Close Chatbot" : "Open Chatbot"}
+        >
+          <VscRobot
+            style={{
+              fontSize: isMobile ? "28px" : "36px",
+              transform: isOpen ? "rotate(360deg)" : "rotate(0deg)",
+              transition: "transform 0.4s ease",
+            }}
+          />
+        </button>
 
-      {/* Popup Dialog (if needed) */}
+      {/* Dialogue Box */}
       <DialogueBox isOpen={isOpen} setIsOpen={setIsOpen} />
 
       <style>
@@ -46,12 +59,13 @@ const BotButton = () => {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
           }
+
           @keyframes slideIn {
-            from { 
+            from {
               opacity: 0;
-              transform: translateY(20px);
+              transform: translateY(30px);
             }
-            to { 
+            to {
               opacity: 1;
               transform: translateY(0);
             }

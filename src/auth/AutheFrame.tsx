@@ -5,14 +5,12 @@ import toast from "react-hot-toast";
 const FIREBASE_HOSTING_URL = "https://code-analyzer-login-auth.vercel.app";
 const API_BASE_URL = "http://localhost:2000"; // Extract this to an environment variable
 
-
 const AutheFrame = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const { loading, setError, setLoading, error , userResponse,setUserResponse} = useGlobalContext();
-  const [errorMessage, setErrorMessage ,] = useState<string | null>(null);
+  const { loading, setError, setLoading, error, userResponse, setUserResponse } = useGlobalContext();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  
-  //Request authentication 
+  // Request authentication 
   const requestAuth = () => {
     setLoading(true);
     setErrorMessage(null);
@@ -26,24 +24,25 @@ const AutheFrame = () => {
       FIREBASE_HOSTING_URL
     );
   };
-    React.useEffect(() => {
-    const savedUser = localStorage.getItem("analyzer");
-    if (savedUser) setUserResponse(JSON.parse(savedUser));
-  }, []);
 
+  useEffect(() => {
+       chrome.storage.sync.get("analyzer", (result) => {
+      const savedUser = result.analyzer;
+      if (savedUser) setUserResponse(JSON.parse(savedUser));
+      console.log("saved user is :",savedUser);
+    });
+  }, [setUserResponse]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleMessage = async (event: MessageEvent) => {
-      // allow origin detect to my chrome extesnion id manually;
       const allowedOrigins = [FIREBASE_HOSTING_URL, "chrome-extension://fmjgimepnoffjjongiedkgbanfnhobkk"];
       if (!allowedOrigins.includes(event.origin)) {
         console.warn("Blocked message from:", event.origin);
         return;
       }
-      const { idToken } = JSON.parse(event.data); // Ensure it's parsed correctly
-
+      const { idToken } = JSON.parse(event.data);
       if (!idToken) {
-        console.error("token not received :", idToken);
+        console.error("token not received:", idToken);
         setErrorMessage(idToken);
         setLoading(false);
         return;
@@ -55,64 +54,62 @@ const AutheFrame = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${idToken}`
           },
-          credentials:"same-origin",
-          body: JSON.stringify({ idToken }) // Send as a plain object, NOT inside "data"
+          credentials: "same-origin",
+          body: JSON.stringify({ idToken })
         });
         if (!response.ok) {
           console.error("Server Error:", response.status, response.statusText);
           setErrorMessage(`Server error: ${response.statusText}`);
           setLoading(false);
           return;
-        }
+        } 
         const FinalResponseData = await response.json();
 
         if (!FinalResponseData || typeof FinalResponseData !== "object") {
           console.error("Invalid response format:", FinalResponseData);
-          setErrorMessage("Unexpected server response");  // 🔴 This causes the UI error
+          setErrorMessage("Unexpected server response");
           setLoading(false);
           return;
         }
-        const { message , user: userData } = FinalResponseData;
+        const { message, user: userData } = FinalResponseData;
         if (userData?.email) {
-          console.log("Login successful:", userData);
-          localStorage.setItem("analyzer",JSON.stringify(userData));
+              chrome.storage.sync.set({ analyzer: JSON.stringify(userData) }); 
           setUserResponse({ name: userData.name });
           toast.success("Login successful!");
-        } else {
+        }
+        else {
           throw new Error(message || "Login failed");
         }
-        // Login error 
+      
+
       } catch (error) {
         console.error("Login error:", error);
-        setError("error"); // For your global state
+        setError("error");
       } finally {
         setLoading(false);
       }
     };
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, [setUserResponse , setLoading , setError]);
+  }, [setUserResponse, setLoading, setError]);
 
   const logout = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/user/logout`, {
         method: "POST",
-        credentials: "include", // Ensure cookie deletion
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          // Adding some headers that might help with CORS pre-flight
           "Accept": "application/json"
         },
-        // Adding empty body to ensure proper request format
         body: JSON.stringify({})
       });
-      
+
       if (!response.ok) {
         throw new Error(`Logout failed: ${response.status} ${response.statusText}`);
       }
-      
-      // Clear local storage (using the correct key from your code)
-      localStorage.removeItem("analyzer");
+
+      chrome.storage.sync.remove("analyzer");
       setUserResponse(null);
       toast.success("Logout successful!");
     } catch (error) {
@@ -121,8 +118,6 @@ const AutheFrame = () => {
     }
   };
 
-
-  
   return (
     <div className="flex flex-col items-center justify-center p-6 bg-zinc-800 rounded-lg shadow-lg">
       <iframe
@@ -131,7 +126,7 @@ const AutheFrame = () => {
         style={{ display: "none" }}
         title="Authentication Frame"
       />
-
+      <p className="text-center mt-2 text-sm text-gray-400"></p>
       <p className="text-center mt-4 text-sm font-semibold text-white">
         Authenticate with Google to use
         <span className="block text-xl font-bold text-blue-500">
@@ -153,7 +148,7 @@ const AutheFrame = () => {
       >
         {loading ? (
           <span className="flex items-center">
-        <span className="mr-2">You Logged Out... Come Back Soon! 😢</span>
+        <span className="mr-2">You Logging Out... Come Back Soon! 😢</span>
         <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-zinc-900"></div>
           </span>
         ) : (

@@ -21,3 +21,6 @@ src/constant/config.ts
 # System Files
 .DS_Store
 Thumbs.db
+
+#manifest
+manifest.json

@@ -12,13 +12,12 @@ const App = () => {
 
   // Manually manage userResponse state
   const checkUserStatus = () => {
-    if (chrome?.storage) {
-      chrome.storage.local.get("analyzer", (result) => {
+    if (chrome?.storage.sync) {
+      chrome.storage.sync.get("analyzer", (result) => {
         console.log("Fetched user status:", result.analyzer);
         setUserResponse(!!result.analyzer);
       });
-
-      chrome.storage.onChanged.addListener((changes) => {
+      chrome.storage.sync.onChanged.addListener((changes) => {
         if (changes.analyzer) {
           setUserResponse(!!changes.analyzer.newValue);
         }
@@ -27,15 +26,14 @@ const App = () => {
       console.warn("chrome.storage is not available.");
     }
   };
-
   useEffect(() => {
     checkUserStatus();
     return () => {
-      chrome?.storage?.onChanged.removeListener(checkUserStatus);
+      chrome?.storage?.sync?.onChanged.removeListener(checkUserStatus);
     };
   }, []);
 
-  return userResponse ? (<BotButton /> ): <h1>Please Log In</h1>;
+  return userResponse ? (<BotButton /> ):"";
 };
 
 const root = createRoot(container);
