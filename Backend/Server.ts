@@ -7,6 +7,7 @@ import { MongoDbConnection } from "./config/MongoDbConnection";
 import cookieParser from "cookie-parser";
 import bodyParser from 'body-parser';
 import admin from 'firebase-admin';
+import { LimitRouter } from "./routes/LimitRoutes";
 
 const app = express();
 dotenv.config();
@@ -26,8 +27,11 @@ app.use(cors({
 }));
 
 
-// db import
+//User-Routes 
 app.use("/user", router);
+//Limit-Routes
+app.use('/bot' ,LimitRouter);
+
 
 //  routes
 app.get("/", (req,res) => {

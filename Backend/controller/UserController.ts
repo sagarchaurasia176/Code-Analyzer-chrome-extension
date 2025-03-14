@@ -53,16 +53,18 @@ export async function UserController(req: Request, res: Response): Promise<void>
   }
 }
 
-export const LogoutController = (req: Request, res: Response): void => {
+// Logout controller 
+export const LogoutController = async(req: Request, res: Response): Promise<void> => {
   try {
+    // Cleared the cookies in every request !
     res.clearCookie("analyzer", {
-      httpOnly: false,
+      httpOnly: true,
       secure: false,
       sameSite: "none",
     });
     res.status(200).json({
       success: true,
-      message: "Logged out successfully",
+      message: "Logged out and data delete from db | successfully",
     });
   } catch (error) {
     console.error("Logout error:", error);
@@ -70,27 +72,5 @@ export const LogoutController = (req: Request, res: Response): void => {
       success: false,
       message: "Failed to logout",
     });
-  }
-};
-export const AuthMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): void => {
-  try {
-    const token = req.cookies?.analyzer;
-    if (!token) {
-      res.status(401).json({ success: false, message: "Authentication required for middleare controller" });
-      return;
-    }
-
-    // Verify JWT token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
-    (req as any).user = decoded; // Attach user data to request
-
-    next();
-  } catch (error) {
-    console.error("Auth middleware error:", error);
-    res.status(401).json({ success: false, message: "Invalid authentication from middleware" });
   }
 };
