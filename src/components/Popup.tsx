@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import GoogleAuth from '../auth/AutheFrame';
 import AutheFrame from "../auth/AutheFrame";
+import codeLogo from '../icons/codeAnalyzer.png';
+
 
 // Popup - component.tsx
 const Popup = () => {
@@ -11,8 +12,17 @@ const Popup = () => {
         isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
       } w-96 p-6 rounded-lg shadow-lg border transition-all`}
     >
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-lg border-b-2 font-bold">Code-Analyzer</h1>
+      <div className="flex justify-between items-center mb-4 bg-gradient-to-r from-slate-900 to-slate-700 rounded-2xl p-4 shadow-lg">
+        <div className="flex items-center">
+          <h1 className="text-lg  text-white  font-extrabold flex items-center">
+         Code
+        </h1>
+        <img src={codeLogo} alt="" className="w-5 " />
+        <h2 className="text-lg font-extrabold text-yellow-400 ">
+          Analyzer
+        </h2>
+        </div>
+      
 
         <button
           onClick={() => setIsDarkMode(!isDarkMode)}

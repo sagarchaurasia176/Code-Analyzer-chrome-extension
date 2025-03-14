@@ -1,5 +1,8 @@
 import { model, Schema } from "mongoose";
 
+// 👉Problem : user id not updated in this schema 
+
+
 const userDetails = new Schema({
     uid: {
         type: String,

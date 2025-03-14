@@ -140,7 +140,7 @@ const AutheFrame = () => {
       <p className="text-center mt-4 text-sm font-semibold text-white">
         Authenticate with Google to use
         <span className="block text-xl font-bold text-blue-500">
-          Complexity Analyzer
+        Code-Analyzer
         </span>
       </p>
       <p className="text-center mt-2 text-sm text-gray-400">
