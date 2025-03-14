@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../context/ContextManager";
 import toast from "react-hot-toast";
+import codeLogo from '../icons/codeAnalyzer.png';
+
 
 const FIREBASE_HOSTING_URL = "https://code-analyzer-login-auth.vercel.app";
 const API_BASE_URL = "http://localhost:2000"; // Extract this to an environment variable
@@ -129,23 +131,20 @@ const AutheFrame = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-zinc-800 rounded-lg shadow-lg">
+    <div className="flex flex-col items-center justify-center p-6 bg-slate-950 rounded-lg ">
       <iframe
         ref={iframeRef}
         src={FIREBASE_HOSTING_URL}
         style={{ display: "none" }}
         title="Authentication Frame"
       />
-      <p className="text-center mt-2 text-sm text-gray-400"></p>
-      <p className="text-center mt-4 text-sm font-semibold text-white">
-        Authenticate with Google to use
-        <span className="block text-xl font-bold text-blue-500">
-        Code-Analyzer
-        </span>
+      <p className="text-center mt-4  text-sm font-semibold text-slate-400">
+        Unlock the full potential of our extension by authenticating with Google.
       </p>
-      <p className="text-center mt-2 text-sm text-gray-400">
-        Your data is secure and will not be shared with third parties.
-      </p>
+      <div className="flex justify-center items-center mb-4">
+      
+      </div>
+      
 
       {userResponse ? (
         <>
@@ -183,31 +182,28 @@ const AutheFrame = () => {
         </>
       ) : (
         <>
-          <button
+            <button
             onClick={requestAuth}
-            className={`p-3 rounded-lg w-full cursor-pointer bg-blue-500 text-white font-bold shadow-md flex items-center justify-center mt-4 transition 
-        ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`p-3 rounded-lg w-full cursor-pointer bg-gradient-to-r from-slate-900 via-slate-900 to-red-500 text-white font-bold shadow-md flex items-center justify-center mt-4 transition 
+            ${loading ? "opacity-50 cursor-not-allowed" : "hover:from-slate-900 hover:via-slate-900 hover:to-red-600 hover:transform-3d"}`}
             disabled={loading}
-          >
+            style={{ transition: "background-color 0.5s ease" }}
+            >
             {loading ? (
               <span className="flex items-center">
-                <span className="mr-2">Processing...</span>
-                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-white"></div>
+              <span className="mr-2">Processing...</span>
+              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-white"></div>
               </span>
             ) : (
-              <span className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
-                </svg>
-                Try For Free
-              </span>
+                <span className="flex items-center text-center justify-between font-semibold text-cs text-white">
+                <img src={codeLogo} alt="" className="w-5 mr-2" />
+
+                <span className="bg-gradient-to-r from-white via-white to-white  font-semibold bg-clip-text text-transparent">
+                 Get Started for Free
+                </span>
+                </span>
             )}
-          </button>
+            </button>
         </>
       )}
       {errorMessage && (
