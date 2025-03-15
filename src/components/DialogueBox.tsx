@@ -57,7 +57,7 @@ const DialogueBox = ({
       editor = document.querySelector(selector);
       if (editor) break;
     }
-
+// gemini flash changed
     if (!editor) {
       console.log("Editor not found");
       return "";
