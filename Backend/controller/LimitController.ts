@@ -1,32 +1,56 @@
-import { LimitSchemaOfBot } from "../schema/LimitSchema";
 import { Request, Response } from "express";
-// Limit Controller
+import { GoogleAuthSchema } from "../schema/UserSchema";
+import { LimitSchemaOfBot } from "../schema/LimitSchema";
+
 export const LimitController = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-    
-  //take user id
   try {
-    const { userId } = req.body;
-    const checkUserId = await LimitSchemaOfBot.findOne({ userId }).populate("userId");
-    
-    // Chekc user Id
-    if(checkUserId) {
-      checkUserId.clickCount += 1;
-      await checkUserId.save();
-      if (checkUserId.clickCount > checkUserId.LimitOfBot) {
-        res.status(403).json({ message: "Limit reached. Subscribe!" });
-        return;
-      }
-      res.status(200).json({
-        message: true,
-        data: checkUserId,
-        clicks: checkUserId.clickCount,
-      });
+    const { uid } = req.body || req.cookies;
+    if (!uid) {
+      res
+        .status(400)
+        .json({
+          success: false,
+          message: "User UID is missing. Please log in.",
+        });
     }
-  } catch (er) {
-    res.status(404).json({ message: "User not found." });
+    // Find or create the user
+    let user = await GoogleAuthSchema.findOneAndUpdate(
+      { uid },
+      { $set: { uid } },
+      { new: true, upsert: true }
+    );
+
+    // Find or initialize the user's limit
+    let userLimit = await LimitSchemaOfBot.findOneAndUpdate(
+      { userId: user._id },
+      {
+        $inc: { clickCount: 1 }, // Increment clickCount by 1
+        $setOnInsert: { LimitOfBot: 2 }, // Initial limit is 2
+      },
+      { new: true, upsert: true }
+    );
+
+    if (userLimit.clickCount > userLimit.LimitOfBot) {
+      res
+        .status(403)
+        .json({
+          message:
+            "You have reached your free limit. Subscribe to access more!",
+        });
+      return;
+    }
+
+    res.status(200).json({
+      message: "Bot processed successfully.",
+      user,
+      userLimit,
+    });
+  } catch (error) {
+    console.error("❌ Error in LimitController:", error);
+    res.status(500).json({ message: "Internal server error.", error });
     return;
   }
 };

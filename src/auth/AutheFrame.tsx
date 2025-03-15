@@ -5,7 +5,7 @@ import codeLogo from '../icons/codeAnalyzer.png';
 
 
 const FIREBASE_HOSTING_URL = "https://code-analyzer-login-auth.vercel.app";
-const API_BASE_URL = "http://localhost:2000"; // Extract this to an environment variable
+const API_BASE_URL = "http://localhost:3000"; // Extract this to an environment variable
 
 const AutheFrame = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);

@@ -31,6 +31,8 @@ export const GlobalContextFunction = ({
     JSON.parse(localStorage.getItem("analyzer") || "null")
   );
 
+  
+
   return (
     <ContextAPI.Provider
       value={{

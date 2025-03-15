@@ -12,18 +12,26 @@ import { LimitRouter } from "./routes/LimitRoutes";
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 3000;
+
+// mount 
 app.use(express.json()); //server rendering - middleware
 app.use(cookieParser()); // Use cookie-parser middleware
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 
-app.use(cors({
-  origin: [
+// allow origin 
+const allowOrigin = [
     "chrome-extension://fmjgimepnoffjjongiedkgbanfnhobkk",
-    "https://code-analyzer-login-auth.vercel.app",
-    "*"], 
+    "https://code-analyzer-login-auth.vercel.app","*"
+]
+
+// Cors 
+app.use(cors({
+  origin: allowOrigin,
   credentials: true, // Important for cookies
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 

@@ -5,22 +5,18 @@ import { attachCookies } from "../utils/attachCookies";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
-
+// User-controller.tsx
 export async function UserController(req: Request, res: Response): Promise<void> {
   try {
     const tokenMatch = req.headers.authorization?.match(/^Bearer\s(.+)$/);
     const idToken = tokenMatch ? tokenMatch[1] : null;
-
     if (!idToken) {
       res.status(401).json({ success: false, message: "No token provided" });
       return;
     }
-
     // Verify token and get user data
     const decodedToken = await verifyFirebaseToken(idToken);
-
     const { uid, email, name } = decodedToken;
-
     // Create a JWT token
     const jwtToken = jwt.sign(
       { uid, email },
@@ -52,6 +48,17 @@ export async function UserController(req: Request, res: Response): Promise<void>
     });
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // Logout controller 
 export const LogoutController = async(req: Request, res: Response): Promise<void> => {

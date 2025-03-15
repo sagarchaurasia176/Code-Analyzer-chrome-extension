@@ -4,7 +4,8 @@ import mongoose from "mongoose";
 const LimitSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        requierd:true
     },
     createdAt: {
         type: Date,
