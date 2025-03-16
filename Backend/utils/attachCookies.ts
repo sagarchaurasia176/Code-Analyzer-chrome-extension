@@ -2,6 +2,7 @@ import { Response } from 'express'
 import dotenv from 'dotenv';
 dotenv.config();
 
+// attach cookies
 export const attachCookies = (res:Response , token :string)=>{
     res.cookie("analyzer", token, {
         httpOnly: true, // Prevents client-side access (XSS protection)
