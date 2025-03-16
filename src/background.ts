@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "fetchBotLimit") {
     const { uid } = request;
   
-    fetch("http://localhost:3000/bot/limit", {
+    fetch("https://code-analyzer-chrome-extension.onrender.com/bot/limit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ uid })
