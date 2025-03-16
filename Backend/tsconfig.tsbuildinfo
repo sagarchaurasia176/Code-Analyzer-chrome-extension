@@ -1,1 +1,0 @@
-{"root":["./server.ts","./config/mongodbconnection.ts","./controller/limitcontroller.ts","./controller/usercontroller.ts","./routes/limitroutes.ts","./routes/userroutes.ts","./schema/limitschema.ts","./schema/userschema.ts","./utils/attachcookies.ts","./utils/firebaseadmin.ts"],"version":"5.8.2"}

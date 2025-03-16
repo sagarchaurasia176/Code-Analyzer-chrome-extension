@@ -6,9 +6,10 @@ import { Request, Response } from "express";
 import { MongoDbConnection } from "./config/MongoDbConnection";
 import cookieParser from "cookie-parser";
 import bodyParser from 'body-parser';
-import admin from 'firebase-admin';
+// import admin from 'firebase-admin';
 import { LimitRouter } from "./routes/LimitRoutes";
 
+// express code apply it so we get
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -53,3 +54,5 @@ const start = async () => {
   });
 };
 start();
+
+
