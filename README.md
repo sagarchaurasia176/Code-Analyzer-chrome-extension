@@ -1,10 +1,10 @@
-# Tc-Analyzer Chrome Extension
+# code-Analyzer Chrome Extension
 
 ## Overview
 
-The **Time Complexity Analyzer (TC-Analyzer) Chrome Extension** is designed to help developers optimize their algorithms by providing instant insights into time and space complexity. Whether you are browsing coding platforms, reviewing code snippets, or working on your own projects, this extension simplifies complexity analysis, allowing you to write more efficient and optimized code.
+The **(Code-Analyzer) Chrome Extension** is designed to help developers optimize their algorithms by providing instant insights into time and space complexity. Whether you are browsing coding platforms, reviewing code snippets, or working on your own projects, this extension simplifies complexity analysis, allowing you to write more efficient and optimized code.
 
-With its seamless integration into the browser, TC-Analyzer empowers developers, students, and coding enthusiasts to analyze their code on the go without needing external tools. The extension leverages **Gemini AI** to predict and provide detailed complexity analysis, making it a powerful assistant for algorithmic efficiency.
+With its seamless integration into the browser, Code-Analyzer empowers developers, students, and coding enthusiasts to analyze their code on the go without needing external tools. The extension leverages **Gemini AI** to predict and provide detailed complexity analysis, making it a powerful assistant for algorithmic efficiency.
 
 ---
 
@@ -40,14 +40,15 @@ With its seamless integration into the browser, TC-Analyzer empowers developers,
 ## Tech Stack
 
 - **Frontend:** TypeScript, Tailwind CSS, and other CSS libraries
-- **Authentication & Database:** Firebase
+- **Backend:** NodeJs , ExpressJs
+- **Authentication & Database:** Firebase + Mongo db
 - **AI Integration:** Gemini AI
 - **Build Tool:** Parcel for efficient bundling
 - **Browser Compatibility:** Optimized for Chrome
 
 ---
 
-## Why Use TC-Analyzer?
+## Why Use Code-Analyzer?
 
 ✅ **Boost Coding Productivity:** Get real-time complexity analysis while coding.
 ✅ **Improve Algorithm Efficiency:** Identify bottlenecks and optimize your code with AI-driven suggestions.
@@ -121,6 +122,8 @@ pnpm start
 ![Screenshot 2025-02-18 005549](https://github.com/user-attachments/assets/db459fc4-0da7-45f2-8aa9-f8671c98df8b)
 ![Screenshot 2025-02-16![Screenshot 2025-02-18 015532](https://github.com/user-attachments/assets/a417cb13-8a45-4517-b56d-6c98d5f7deca)
 ![Screenshot 2025-02-18 015532](https://github.com/user-attachments/assets/19e8e3e9-667c-4d57-b7c4-6dd22eda670c)
+![Screenshot 2025-03-16 000705](https://github.com/user-attachments/assets/61e87a79-5749-4b9c-8a79-88792295d1ce)
+![Screenshot 2025-03-12 111713](https://github.com/user-attachments/assets/f31b5827-511a-479b-b2d9-3dc39e341262)
 
 
 ---
@@ -131,5 +134,5 @@ pnpm start
 We welcome contributions! If you have ideas for improvements or want to report bugs, feel free to check out the project repository and contribute to its development.
 ---
 
-With **TC-Analyzer**, optimizing algorithms has never been easier. Whether you're a beginner learning data structures or a seasoned developer working on performance-critical applications, this extension is the perfect tool to refine your code efficiently!
+With **Code-Analyzer**, optimizing algorithms has never been easier. Whether you're a beginner learning data structures or a seasoned developer working on performance-critical applications, this extension is the perfect tool to refine your code efficiently!
 
