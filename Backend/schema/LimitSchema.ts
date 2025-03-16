@@ -17,7 +17,7 @@ const LimitSchema = new mongoose.Schema({
     },
     LimitOfBot: {
         type: Number,
-        default: 2
+        default: 25
     }
 })
 export const LimitSchemaOfBot = mongoose.model('LimitOfBot', LimitSchema);

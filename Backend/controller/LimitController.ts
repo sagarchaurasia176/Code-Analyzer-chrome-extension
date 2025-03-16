@@ -28,7 +28,7 @@ export const LimitController = async (
       { userId: user._id },
       {
         $inc: { clickCount: 1 }, // Increment clickCount by 1
-        $setOnInsert: { LimitOfBot: 2 }, // Initial limit is 2
+        $setOnInsert: { LimitOfBot: 25 }, // Initial limit is 2
       },
       { new: true, upsert: true }
     );

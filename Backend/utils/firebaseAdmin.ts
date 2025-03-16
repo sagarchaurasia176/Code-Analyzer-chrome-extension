@@ -4,7 +4,6 @@ import admin from "firebase-admin";
 dotenv.config();
 
 const serviceAccountEnv = process.env.FIREBASE_SERVICE_ACCOUNT!;
-console.log("service account fetch from env" ,serviceAccountEnv);
 
 if (!serviceAccountEnv) {
   throw new Error("FIREBASE_SERVICE_ACCOUNT environment variable is not defined");
