@@ -1,13 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import router from "./routes/UserRoutes";
 import { Request, Response } from "express";
 import { MongoDbConnection } from "./config/MongoDbConnection";
 import cookieParser from "cookie-parser";
 import bodyParser from 'body-parser';
 // import admin from 'firebase-admin';
+import { router } from "./routes/UserRoutes";
 import { LimitRouter } from "./routes/LimitRoutes";
+
+// OTHER NPM LIB
+import responseTime from 'response-time'
+import {rateLimit} from 'express-rate-limit'
+import { limiter } from "./rateLimiter";
 
 // express code apply it so we get
 const app = express();
@@ -19,6 +24,10 @@ app.use(express.json()); //server rendering - middleware
 app.use(cookieParser()); // Use cookie-parser middleware
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(responseTime((req,res,time)=>{
+  console.log(`Request to ${req.method} ${req.url} took ${time.toFixed(2)}ms`);
+}));
+app.use(limiter);
 
 
 // allow origin 
@@ -40,6 +49,7 @@ app.use(cors({
 app.use("/user", router);
 //Limit-Routes
 app.use('/bot' ,LimitRouter);
+
 
 
 //  routes
