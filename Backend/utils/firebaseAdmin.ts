@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import admin from "firebase-admin";
 dotenv.config();
 
-const serviceAccountEnv = process.env.FIREBASE_SERVICE_ACCOUNT!;
+const serviceAccountEnv = process.env.RDS_FIREBASE_SERVICE_ACCOUNT!;
 
 if (!serviceAccountEnv) {
   throw new Error("FIREBASE_SERVICE_ACCOUNT environment variable is not defined");

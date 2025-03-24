@@ -22,6 +22,7 @@
     "dotenv": "^16.4.7",
     "express-rate-limit": "^7.5.0",
     "firebase-admin": "^13.1.0",
+    "jq": "^1.7.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.14.0",
     "mongoose": "^8.12.0",

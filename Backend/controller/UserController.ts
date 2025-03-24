@@ -20,7 +20,7 @@ export async function UserController(req: Request, res: Response): Promise<void>
     // Create a JWT token
     const jwtToken = jwt.sign(
       { uid, email },
-      process.env.JWT_SECRET as string,
+      process.env.RDS_JWT_SECRET as string,
       { expiresIn: "7d" }
     );
     let user = await GoogleAuthSchema.findOne({ email });
