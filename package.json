@@ -6,6 +6,7 @@
     "@firebase/app-compat": "^0.2.50",
     "@firebase/auth": "^1.9.1",
     "@google/generative-ai": "^0.21.0",
+    "@parcel/types": "^2.14.1",
     "@react-oauth/google": "^0.12.1",
     "@tailwindcss/postcss": "^4.0.8",
     "@types/chrome": "^0.0.304",
@@ -15,6 +16,7 @@
     "dotenv": "^16.4.7",
     "firebase": "^11.3.1",
     "framer-motion": "^12.4.2",
+    "patch-package": "^8.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -28,12 +30,12 @@
   },
   "devDependencies": {
     "@firebase/auth-types": "^0.13.0",
-    "@parcel/config-webextension": "^2.13.3",
+    "@parcel/config-webextension": "^2.14.1",
     "@parcel/transformer-json": "^2.13.3",
     "@parcel/transformer-sass": "2.13.3",
-    "@parcel/transformer-typescript-tsc": "^2.13.3",
+    "@parcel/transformer-typescript-tsc": "^2.14.1",
     "buffer": "^5.7.1",
-    "parcel": "^2.13.3",
+    "parcel": "^2.14.1",
     "parcel-reporter-static-files-copy": "^1.5.3",
     "postcss": "^8.5.3",
     "process": "^0.11.10",
@@ -43,7 +45,7 @@
     "last 2 Chrome versions"
   ],
   "scripts": {
-    "start": "parcel watch manifest.json index.html src/background.ts src/content.tsx --host localhost --config @parcel/config-webextension",
+    "start": "parcel watch manifest.json index.html src/background.ts src/content.tsx --config @parcel/config-webextension",
     "build": "parcel build manifest.json index.html src/background.ts src/content.tsx --config @parcel/config-webextension",
     "type-check": "tsc --noEmit"
   },

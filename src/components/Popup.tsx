@@ -1,8 +1,6 @@
-import React from "react";
 import AutheFrame from "../auth/AutheFrame";
-import codeLogo from "../icons/codeAnalyzer.png";
-
 // Popup - component.tsx
+const Logos = new URL('../glass.png', import.meta.url).href;
 const Popup = () => {
   return (
     <div className="bg-slate-900 text-black w-96 p-6 rounded-lg shadow-xl border transition-all duration-300 ease-in-out">
@@ -10,7 +8,8 @@ const Popup = () => {
       <div className="flex  justify-center  items-center mb-6 bg-gradient-to-r from-slate-900 to-slate-700 rounded-2xl p-4 shadow-lg animate-fade-in">
         <div className="flex items-center gap-2">
           <h1 className="text-xl font-extrabold flex items-center text-white">Code</h1>
-          <img src={codeLogo} alt="Code Analyzer Logo" className="w-6 h-6" />
+          {/* <img src={Logo} alt="Code Analyzer Logo" className="w-6 h-6"  /> */}
+          <img className="w-14" src={Logos} alt="Logo"/>
           <h2 className="text-xl font-extrabold text-yellow-400">Analyzer</h2>
         </div>
       </div>

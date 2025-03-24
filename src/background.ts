@@ -15,7 +15,6 @@ chrome.storage.local.set({ analyzer: true });
 // Simulate user logout
 chrome.storage.local.remove("analyzer");
 
-
 //LIMIT logic 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "fetchBotLimit") {

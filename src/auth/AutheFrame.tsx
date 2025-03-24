@@ -1,227 +1,181 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../context/ContextManager";
 import toast from "react-hot-toast";
-import codeLogo from '../icons/codeAnalyzer.png';
 
+const FIREBASE_HOSTING_URL = (import.meta as any).env.FIREBASE_HOSTING_URL;
+const API_BASE_URL = (import.meta as any).env.API_BASE_URL;
+const CHROME_ID = (import.meta as any).env.CHROME_ID;
 
-const FIREBASE_HOSTING_URL = "https://code-analyzer-login-auth.vercel.app";
-const API_BASE_URL = "https://code-analyzer-chrome-extension.onrender.com"; // Extract this to an environment variable
-
-const AutheFrame = () => {
+const AuthFrame: React.FC = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const {
-    loading,
-    setError,
-    setLoading,
-    error,
-    userResponse,
-    setUserResponse,
-  } = useGlobalContext();
+  const { loading, setLoading, setUserResponse, userResponse } = useGlobalContext();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Request authentication
-  const requestAuth = () => {
-    setLoading(true);
-    setErrorMessage(null);
-    if (!iframeRef.current?.contentWindow) {
-      setErrorMessage("Authentication frame not loaded");
-      setLoading(false);
-      return;
-    }
-    iframeRef.current.contentWindow.postMessage(
-      { initAuth: true },
-      FIREBASE_HOSTING_URL
-    );
-  };
-
+  // Load user data from Chrome storage on mount
   useEffect(() => {
     chrome.storage.sync.get("analyzer", (result) => {
-      const savedUser = result.analyzer;
-      if (savedUser) setUserResponse(JSON.parse(savedUser));
-      console.log("saved user is :", savedUser);
+      if (result.analyzer) {
+        try {
+          setUserResponse(JSON.parse(result.analyzer));
+        } catch (error) {
+          console.error("Error parsing stored user data:", error);
+        }
+      }
     });
   }, [setUserResponse]);
 
+  // Handle authentication messages
   useEffect(() => {
     const handleMessage = async (event: MessageEvent) => {
-      const allowedOrigins = [
-        FIREBASE_HOSTING_URL,
-        "chrome-extension://fmjgimepnoffjjongiedkgbanfnhobkk",
-      ];
-      if (!allowedOrigins.includes(event.origin)) {
-        console.warn("Blocked message from:", event.origin);
+      console.log("🚀 Event Received:", event);
+      
+      // Validate origin
+      const allowedOrigins = new Set([FIREBASE_HOSTING_URL, CHROME_ID]);
+      if (!allowedOrigins.has(event.origin)) {
+        console.warn("⛔ Blocked Message from:", event.origin);
         return;
       }
-      const { idToken } = JSON.parse(event.data);
-      if (!idToken) {
-        console.error("token not received:", idToken);
-        setErrorMessage(idToken);
-        setLoading(false);
-        return;
-      }
+      
       try {
+        // Parse event data properly
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        console.log("✅ Parsed Data:", data);
+        
+        const { idToken } = data;
+        if (!idToken) throw new Error("Token missing from response");
+        
+        setLoading(true);
+        
+        // API call to login
         const response = await fetch(`${API_BASE_URL}/user/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${idToken}`,
           },
-          credentials: "same-origin",
+          credentials: "include",
           body: JSON.stringify({ idToken }),
         });
-        if (!response.ok) {
-          console.error("Server Error:", response.status, response.statusText);
-          setErrorMessage(`Server error: ${response.statusText}`);
-          setLoading(false);
-          return;
-        }
-        const FinalResponseData = await response.json();
-
-        if (!FinalResponseData || typeof FinalResponseData !== "object") {
-          console.error("Invalid response format:", FinalResponseData);
-          setErrorMessage("Unexpected server response");
-          setLoading(false);
-          return;
-        }
-        const { message, user: userData } = FinalResponseData;
-        if (userData?.email) {
-          chrome.storage.sync.set({ analyzer: JSON.stringify(userData) });
-          setUserResponse({ name: userData.name });
+        
+        if (!response.ok) throw new Error(`Server error: ${response.statusText}`);
+        
+        const userData = await response.json();
+        console.log("🔵 Server Response:", userData);
+        
+        if (userData.user?.email) {
+          chrome.storage.sync.set({ analyzer: JSON.stringify(userData.user) });
+          setUserResponse({ name: userData.user.name });
           toast.success("Login successful!");
         } else {
-          throw new Error(message || "Login failed");
+          throw new Error(userData.message || "Login failed");
         }
       } catch (error) {
         console.error("Login error:", error);
-        setError("error");
+        setErrorMessage(error instanceof Error ? error.message : "An unknown error occurred");
       } finally {
         setLoading(false);
       }
     };
+    
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, [setUserResponse, setLoading, setError]);
-
+  }, [setLoading, setUserResponse]);
+  
+  // Initiate authentication
+  const requestAuth = () => {
+    setLoading(true);
+    setErrorMessage(null);
+    
+    if (!iframeRef.current?.contentWindow) {
+      setErrorMessage("Authentication frame not loaded.");
+      setLoading(false);
+      return;
+    }
+    
+    iframeRef.current.contentWindow.postMessage({ initAuth: true }, FIREBASE_HOSTING_URL);
+  };
+  
+  // Handle logout
   const logout = async () => {
     try {
-      //request passed to backend
+      const loadToast = toast.loading("Logging out...|  We'll miss you!");
+      
       const response = await fetch(`${API_BASE_URL}/user/logout`, {
         method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({}),
+        headers: { "Content-Type": "application/json" },
       });
-
-      if (!response.ok) {
-        throw new Error(
-          `Logout failed: ${response.status} ${response.statusText}`
-        );
-      }
-
+      
+      if (!response.ok) throw new Error(`Logout failed: ${response.statusText}`);
+      
       chrome.storage.sync.remove("analyzer");
       setUserResponse(null);
+      toast.dismiss(loadToast);
       toast.success("Logout successful!");
     } catch (error) {
       console.error("Logout error:", error);
-      toast.error("Logout failed: CORS or server issue");
+      toast.error("Logout failed. Please try again.");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-slate-950 rounded-lg ">
+    <div className="flex flex-col items-center justify-center p-6 bg-slate-950 rounded-lg">
+      {/* Hidden Authentication Frame */}
       <iframe
         ref={iframeRef}
         src={FIREBASE_HOSTING_URL}
         style={{ display: "none" }}
         title="Authentication Frame"
       />
-      <p className="text-center mt-4  text-sm font-semibold text-slate-400">
+
+      <p className="text-center mt-4 text-sm font-semibold text-slate-400">
         Unlock the full potential of our extension by authenticating with Google.
       </p>
-      <div className="flex justify-center items-center mb-4">
-      
-      </div>
-      
 
       {userResponse ? (
         <>
+          {/* Logout Button */}
           <button
             onClick={logout}
             className={`p-3 rounded-lg w-full cursor-pointer bg-green-400 text-zinc-900 font-bold shadow-md flex items-center justify-center mt-4 transition 
-        ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-500"}`}
+              ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-500"}`}
             disabled={loading}
           >
-            {loading ? (
-              <span className="flex items-center">
-                <span className="mr-2">
-                  You Logging Out... Come Back Soon! 😢
-                </span>
-                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-zinc-900"></div>
-              </span>
-            ) : (
-              <span className="flex cursor-pointer items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
-                </svg>
-                Logout
-              </span>
-            )}
+            {loading ? "Logging out..." : "Logout"}
           </button>
           <p className="text-center mt-2 text-sm text-gray-400">
-            Thank you for using Complexity Analyzer. We hope to see you again
-            soon!
+            Thank you for using Complexity Analyzer. See you again soon!
           </p>
         </>
       ) : (
         <>
-            <button
+          {/* Login Button */}
+          <button
             onClick={requestAuth}
             className={`p-3 rounded-lg w-full cursor-pointer bg-gradient-to-r from-slate-900 via-slate-900 to-red-500 text-white font-bold shadow-md flex items-center justify-center mt-4 transition 
-            ${loading ? "opacity-50 cursor-not-allowed" : "hover:from-slate-900 hover:via-slate-900 hover:to-red-600 hover:transform-3d"}`}
+            ${loading ? "opacity-50 cursor-not-allowed" : "hover:to-red-600"}`}
             disabled={loading}
-            style={{ transition: "background-color 0.5s ease" }}
-            >
-            {loading ? (
-              <span className="flex items-center">
-              <span className="mr-2">Processing...</span>
-              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-white"></div>
-              </span>
-            ) : (
-                <span className="flex items-center text-center justify-between font-semibold text-cs text-white">
-                <img src={codeLogo} alt="" className="w-5 mr-2" />
-
-                <span className="bg-gradient-to-r from-white via-white to-white  font-semibold bg-clip-text text-transparent">
-                 Get Started for Free
-                </span>
-                </span>
-            )}
-            </button>
+          >
+            {loading ? "Processing..." : "Get Started for Free"}
+          </button>
         </>
       )}
+
+      {/* Display Error Message */}
       {errorMessage && (
         <div className="mt-4 text-red-400 text-sm bg-red-900/20 p-2 rounded-md w-full text-center">
           {errorMessage}
         </div>
       )}
 
+      {/* Display Logged-in User */}
       {userResponse?.name && (
         <div className="text-white text-sm mt-4 bg-blue-900/20 p-2 rounded-md w-full text-center">
-          Logged in as:{" "}
-          <span className="font-bold text-white text-xs">
-            {userResponse.name}
-          </span>
+          Logged in as: <span className="font-bold">{userResponse.name}</span>
         </div>
       )}
     </div>
   );
 };
 
-export default AutheFrame;
+export default AuthFrame;
