@@ -11,7 +11,6 @@ import { LimitRouter } from "./routes/LimitRoutes";
 
 // OTHER NPM LIB
 import responseTime from 'response-time'
-import {rateLimit} from 'express-rate-limit'
 import { limiter } from "./rateLimiter";
 
 // express code apply it so we get
