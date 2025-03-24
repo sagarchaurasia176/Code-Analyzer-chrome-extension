@@ -17,7 +17,7 @@ import { limiter } from "./rateLimiter";
 // express code apply it so we get
 const app = express();
 dotenv.config();
-const port = process.env.PORT || 3000;
+const port = process.env.RDS_HOSTNAME || 3000;
 
 // mount 
 app.use(express.json()); //server rendering - middleware
@@ -57,7 +57,7 @@ app.get("/", (req,res) => {
   res.send("Hello World!");
 });
 const start = async () => {
-  await MongoDbConnection(process.env.MONGODB_URI!);
+  await MongoDbConnection(process.env.RDS_MONGODB_URI!);
   console.log("db connected");
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
