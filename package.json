@@ -1,0 +1,70 @@
+{
+  "name": "complexityanalyzersexten",
+  "version": "1.0.0",
+  "main": "dist/background.js",
+  "description": "Chrome extension for analyzing LeetCode problem complexity",
+  "dependencies": {
+    "@firebase/app-compat": "^0.2.50",
+    "@firebase/auth": "^1.9.1",
+    "@google/generative-ai": "^0.21.0",
+    "@react-oauth/google": "^0.12.1",
+    "@tailwindcss/cli": "^4.0.15",
+    "@types/node": "^22.13.11",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.2.19",
+    "axios": "^1.8.1",
+    "dotenv": "^16.4.7",
+    "firebase": "^11.3.1",
+    "framer-motion": "^12.4.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.5.2",
+    "react-icons": "^5.4.0",
+    "react-otp-input": "^3.1.1",
+    "react-spinners": "^0.15.0",
+    "styled-components": "^6.1.15",
+    "tailwindcss-webpack-plugin": "^0.0.12",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@firebase/auth-types": "^0.13.0",
+    "@parcel/config-webextension": "^2.13.3",
+    "@parcel/transformer-json": "^2.13.3",
+    "@parcel/transformer-sass": "2.13.3",
+    "@parcel/transformer-typescript-tsc": "^2.13.3",
+    "@types/chrome": "^0.0.304",
+    "autoprefixer": "^10.4.21",
+    "buffer": "^5.7.1",
+    "copy-webpack-plugin": "^13.0.0",
+    "css-loader": "^7.1.2",
+    "parcel": "^2.13.3",
+    "parcel-reporter-static-files-copy": "^1.5.3",
+    "postcss": "^8.5.3",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^10.1.5",
+    "process": "^0.11.10",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^4.0.8",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack serve"
+  },
+  "keywords": [
+    "chrome-extension",
+    "leetcode",
+    "complexity-analysis"
+  ],
+  "author": "",
+  "license": "ISC"
+}
