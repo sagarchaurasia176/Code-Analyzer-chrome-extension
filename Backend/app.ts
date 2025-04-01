@@ -11,7 +11,6 @@ import { LimitRouter } from "./routes/LimitRoutes";
 
 // OTHER NPM LIB
 import responseTime from 'response-time'
-import { limiter } from "./rateLimiter";
 
 // express code apply it so we get
 const app = express();
@@ -26,14 +25,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(responseTime((req,res,time)=>{
   console.log(`Request to ${req.method} ${req.url} took ${time.toFixed(2)}ms`);
 }));
-app.use(limiter);
 
 
 // allow origin 
 const allowOrigin = [
-    "chrome-extension://fmjgimepnoffjjongiedkgbanfnhobkk",
-    "https://code-analyzer-login-auth.vercel.app","*"
-]
+      process.env.Chrome_extension_id,
+      process.env.Firebase_Hosted_Url
+].filter((origin): origin is string => origin !== undefined);
 
 // Cors 
 app.use(cors({

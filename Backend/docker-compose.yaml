@@ -1,20 +1,8 @@
-version: "3.9"
-
 services:
-  backend:
-    container_name: code-analyzer-backend
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
+  server:
+    image: sagarchaurasia176/anaex   
+    container_name: chrome_extension_backend
     env_file:
       - .env
-    depends_on:
-      - mongodb
-
-  mongodb:
-    image: mongo:7.0.5
-    container_name: mongodb
     ports:
-      - "27017:27017"
+      - "4000:4000"

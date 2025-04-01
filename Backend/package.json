@@ -32,12 +32,17 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.312",
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
+    "@types/eslint": "^9.6.1",
+    "@types/eslint-scope": "^3.7.7",
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^22.13.8",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
     "express": "^4.21.2",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",

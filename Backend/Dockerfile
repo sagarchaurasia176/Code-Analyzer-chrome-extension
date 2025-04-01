@@ -7,7 +7,7 @@ WORKDIR /Backend
 # Install pnpm globally
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copy package.json and pnpm-lock.yaml first (for better caching)
+# Copy package.json andd pnpm-lock.yaml first (for better caching)
 COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies without copying node_modules
@@ -20,7 +20,11 @@ COPY . .
 RUN pnpm build
 
 # Expose the port your app runs on (8080)
-EXPOSE 8080
+EXPOSE 4000
 
 # Run the built application
 CMD ["node", "dist/app.js"]
+
+
+# docker named
+# codeanalyzer1.0          
