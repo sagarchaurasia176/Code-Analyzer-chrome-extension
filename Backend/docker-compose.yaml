@@ -1,8 +1,8 @@
 services:
   server:
-    image: sagarchaurasia176/anaex   
-    container_name: chrome_extension_backend
+    image: extension  # This will use the 'extension' image you pushed to Docker Hub.
+    container_name: CodeAnalyzer-leetcode
     env_file:
-      - .env
+      - .env  # This will load environment variables from a .env file.
     ports:
-      - "4000:4000"
+      - "4000:4000"  # Maps port 4000 of the container to port 4000 on your host machine.
